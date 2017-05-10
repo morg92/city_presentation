@@ -14,3 +14,25 @@ body {
     overflow: hidden;
     background: rgb(242, 242, 242);
 }
+
+.icon {
+    border: 2px solid orange;
+    width: 80px;
+    height: 300px;
+    margin: 0 auto;
+}
+
+#next {
+    text-align: right;
+}
+
+#previous {
+    text-align: left;
+}
+
+.gallery {
+    border: 2px solid blue;
+    width: 45%;
+    height: 100px;
+    margin:  0 auto;
+}
