@@ -4,49 +4,29 @@
         "anno_fondazione": "1275",
         "descrizione": "https://it.wikipedia.org/wiki/Amsterdam",
         "img": [
-            {
-                "1": "http://www.amsterdam.net/it/wp-content/uploads/sites/20/Prinsengracht.jpg"
-            },
-            {
-                "2": "http://www.iostudionews.it/wp-content/uploads/2016/08/AMSTERDAM-Netherlands-1_01.jpg"
-            },
-            {
-                "3": "https://o.aolcdn.com/images/dims3/GLOB/crop/4320x2273+0+303/resize/1200x630!/format/jpg/quality/85/http%3A%2F%2Fo.aolcdn.com%2Fhss%2Fstorage%2Fmidas%2F600318eae7ff92e9a019ddac9ef567d%2F205142277%2Ftulips-with-canal-houses-of-amsterdam-picture-id467232890"
-            }
+            "http://www.amsterdam.net/it/wp-content/uploads/sites/20/Prinsengracht.jpg",
+            "http://www.iostudionews.it/wp-content/uploads/2016/08/AMSTERDAM-Netherlands-1_01.jpg",
+            "https://o.aolcdn.com/images/dims3/GLOB/crop/4320x2273+0+303/resize/1200x630!/format/jpg/quality/85/http%3A%2F%2Fo.aolcdn.com%2Fhss%2Fstorage%2Fmidas%2F600318eae7ff92e9a019ddac9ef567d%2F205142277%2Ftulips-with-canal-houses-of-amsterdam-picture-id467232890"
         ]
     },
-
     {
         "name": "Berlin",
         "anno_fondazione": "1237",
         "descrizione": "https://it.wikipedia.org/wiki/Berlino",
         "img": [
-            {
-                "1": "https://cdn.getyourguide.com/niwziy2l9cvz/3Nl5nGC5fq2CQ0O42awIwq/0cff0ba6cc53c2e0f9c153e820fcc8d0/berlin-Brandenburg-Gate-1112x630.jpg"
-            },
-            {
-                "2": "http://www.10cose.it/wp-content/uploads/2016/01/reichstag-berlino.jpg"
-            },
-            {
-                "3": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Schloss_Charlottenburg_in_Berlin_as_seen_from_park.jpg"
-            }
+            "https://cdn.getyourguide.com/niwziy2l9cvz/3Nl5nGC5fq2CQ0O42awIwq/0cff0ba6cc53c2e0f9c153e820fcc8d0/berlin-Brandenburg-Gate-1112x630.jpg",
+            "http://www.10cose.it/wp-content/uploads/2016/01/reichstag-berlino.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/1/1f/Schloss_Charlottenburg_in_Berlin_as_seen_from_park.jpg"
         ]
     },
-
-{
+    {
         "name": "Vilnius",
         "anno_fondazione": "1323",
         "descrizione": "https://it.wikipedia.org/wiki/Vilnius",
         "img": [
-            {
-                "1": "https://cdn.balticlivecam.com/images/Vilnius-Panorama.jpg"
-            },
-            {
-                "2": "http://www.nightlife-cityguide.com/wp-content/uploads/2014/12/vilnius-cosa-vedere-town-hall-municipio.jpg"
-            },
-            {
-                "3": "http://www.nationsonline.org/gallery/Lithuania/St-Annes-church-Vilnius.jpg"
-            }
+            "https://cdn.balticlivecam.com/images/Vilnius-Panorama.jpg",
+            "http://www.nightlife-cityguide.com/wp-content/uploads/2014/12/vilnius-cosa-vedere-town-hall-municipio.jpg",
+            "http://www.nationsonline.org/gallery/Lithuania/St-Annes-church-Vilnius.jpg"
         ]
     }
 ]

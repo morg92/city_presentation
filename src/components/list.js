@@ -12,7 +12,7 @@ export default class List extends Component {
 
     handleGallery(event) {
         event.preventDefault();
-        this.props.dispatchGallery(this.props.ui.img.images.img);  //TODO --
+        this.props.dispatchGallery();  //TODO --
     }
 
     render() {
@@ -20,8 +20,8 @@ export default class List extends Component {
             <div>
                 <ul>
                     <li>
-                        <p>{this.props.ui.img.images.name}</p>
-                        <a href={this.props.ui.img.images.descrizione}>Descrizione</a>
+                        <p>{}</p>
+                        <a href={this.props}>Descrizione</a>
                         <button onClick={this.handleGallery} value="GO!"></button>
                     </li>
                 </ul>

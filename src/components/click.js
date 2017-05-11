@@ -7,14 +7,14 @@ export default class Click extends Component {
         this.handleClick = this.handleClick.bind(this);
     }
 
-    handleClick(event) {
-        this.props.dispatchList(event);
+    handleClick() {
+        this.props.dispatchList(event); 
     }
 
     render () {
         return (
             <div>
-                <button id="click" onClick={this.handleClick} value="Click Me!"></button>
+                <button className="click" onClick={this.handleClick}>Click Me!</button>
             </div>
         );
     }

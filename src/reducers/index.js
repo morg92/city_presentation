@@ -2,11 +2,13 @@ import { combineReducers } from 'redux';
 import loading from './loading';
 import view from './view';
 import images from './images';
+import choose from './choose';
 
-const reducersCombine = combineReducers({
+const reducers = combineReducers({
     loading,
     view,
-    images
+    images,
+    choose
 });
 
-export default reducersCombine;
+export default reducers;

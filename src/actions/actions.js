@@ -1,9 +1,13 @@
 import { LOAD } from '../costants/costants.js';
 import { ERROR } from '../costants/costants.js';
-import { SEND_GALLERY } from '../costants/costants.js';
-import { SEND_ICON } from '../costants/costants.js';
+import { ADD_ICON } from '../costants/costants.js';
 import { IMG } from '../costants/costants.js';
-import { ADD_GALLERY} from '../costants/costants.js';
+import { ADD_GALLERY } from '../costants/costants.js';
+import { BUTT_ENABLE } from '../costants/costants.js';
+import { SUCCES } from '../costants/costants.js';
+import { ADD_LIST } from '../costants/costants.js';
+import { INFO } from '../costants/costants.js';
+import { data } from '../costants/costants.js';
 
 function isLoading(isLoaded) {
     return {
@@ -25,7 +29,7 @@ function isError(error) {
 
 function succesImg(succes) {
     return {
-        type: SEND_GALLERY,
+        type: SUCCES,
         payload: {
             succes: succes
         }
@@ -34,20 +38,18 @@ function succesImg(succes) {
 
 function imageSelect(selectedImages) {
     return {
-        type: SEND_ICON,
+        type: ADD_ICON,
         payload: {
             selectedImages: selectedImages
         }
     };
 }
 
-function imgArray(json) {    //(json)???
+function imgArray(json) {
     return {
         type: IMG,
         payload: {
-            img: [
-                json
-            ]
+            img: json
         }
     };
 }
@@ -61,30 +63,78 @@ function addGallery(emptyGallery) {
     };
 }
 
+function addList(emptyList) {
+    return {
+        type: ADD_LIST,
+        payload: {
+            emptyList: emptyList
+        }
+    };
+}
 
-export const goEvent = (event) => {
+function enableButton(buttonEnable) {
+    return {
+        type: BUTT_ENABLE,
+        payload: {
+            buttonEnable: buttonEnable
+        }
+    };
+}
+
+function sendCityToList(json) {
+    return {
+        type: INFO,
+        payload: {
+            info: json
+        }
+    };
+}
+
+
+
+
+
+export const goEvent = () => {
     return (dispatch, getState) => {
-        let state = state.getState();
-        if (this.state.ui.img === null) {
-           // dispatch(imgArray(value));      //popolare img(initialState) --> img(images.JSON)
+
+        console.log('>>>>>>>>>>>>>');
+        let state = getState();   // setTimeout SIMULATE SERVER LATENCY
+        let city = [];
+        for (let i of data) {
+
+            const { name, anno_fondazione, descrizione } = i;
+            city.push({
+                name,
+                anno_fondazione,
+                descrizione
+            });
+        }
+
+        if (state.choose.emptyList === true) {
+            dispatch(sendCityToList(city));
             dispatch(isLoading(true));
+            dispatch(addList(false));
         }
         else {
             dispatch(isError(true));
         }
-        //dispatch(abilitaBottoni)
+        dispatch(enableButton(true));
     };
 };
 
-export const listToGallery = (value) => {
-    return (dispatch) => {
-        /*if (botton = enable)
-            (event)
-          img in ANTEPRIMA in Gallery*/
-    }; // end return
+export const listToGallery = () => {
+    return (dispatch, getState) => {
+        let state = getState();
+        const { img } = data;
+        const images = { img };
+        if (state.images.emptyGallery === true) {
+            dispatch(imgArray(images));
+            dispatch(addGallery(false));
+        }
+        dispatch(enableButton(true));
+    };
 };
 
-
-export const toIcon = (value) => {
-    return (dispatch) => {}; //end return
+export const toIcon = () => {
+    return (/*dispatch*/) => { };
 };
