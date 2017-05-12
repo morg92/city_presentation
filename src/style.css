@@ -13,6 +13,7 @@ body {
     height: 100%;
     overflow: hidden;
     background: rgb(242, 242, 242);
+    overflow: scroll;
 }
 
 .icon {
@@ -24,12 +25,13 @@ body {
 
 .next {
     text-align: right;
-    margin-top: 40%; 
+    margin-left: 93%; 
 }
 
 .previous {
     text-align: left;
-    margin-left: 88%;
+    margin-top: 35%;
+    display: inline-block;
 }
 
 .click {
@@ -39,7 +41,7 @@ body {
     width: 70px;
     height: 70px;
     margin-top: 10px;
-    margin-left: 50px;
+    margin-left: 250px;
 }
 
 .gallery {

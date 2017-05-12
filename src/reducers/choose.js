@@ -6,9 +6,7 @@ function initialState() {
     return {
         buttonEnable: false,
         emptyList: true,
-        info: [
-            null
-        ]
+        info: null
     };
 }
 

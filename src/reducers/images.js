@@ -6,9 +6,7 @@ function initialState() {
     return {
         buttonEnable: false,
         emptyGallery: true,
-        img: [
-            null
-        ]
+        img: null
     };
 }
 

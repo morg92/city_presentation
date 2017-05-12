@@ -8,6 +8,8 @@ import { SUCCES } from '../costants/costants.js';
 import { ADD_LIST } from '../costants/costants.js';
 import { INFO } from '../costants/costants.js';
 import { data } from '../costants/costants.js';
+import { SET_BUTT } from '../costants/costants.js';      //modifiche 15:45
+
 
 function isLoading(isLoaded) {
     return {
@@ -90,18 +92,25 @@ function sendCityToList(json) {
     };
 }
 
+function setButton(previous, next) {     //modifiche 15:45
+    return {
+        type: SET_BUTT,
+        payload: {
+            previous: previous,
+            next: next
+        }
+    };
+}
+
 
 
 
 
 export const goEvent = () => {
     return (dispatch, getState) => {
-
-        console.log('>>>>>>>>>>>>>');
-        let state = getState();   // setTimeout SIMULATE SERVER LATENCY
+        let state = getState();
         let city = [];
         for (let i of data) {
-
             const { name, anno_fondazione, descrizione } = i;
             city.push({
                 name,
@@ -110,14 +119,20 @@ export const goEvent = () => {
             });
         }
 
-        if (state.choose.emptyList === true) {
-            dispatch(sendCityToList(city));
-            dispatch(isLoading(true));
-            dispatch(addList(false));
-        }
-        else {
-            dispatch(isError(true));
-        }
+        setTimeout(() => {
+            if (state.choose.emptyList === true) {
+                dispatch(sendCityToList(city));
+                dispatch(addList(false));
+            }
+            if (state.choose.info !== null) {
+                dispatch(isLoading(true));
+            }
+            else {
+                dispatch(isError(true));
+                alert('Loading fail!');
+            }
+        }, 5000);
+
         dispatch(enableButton(true));
     };
 };
@@ -125,8 +140,13 @@ export const goEvent = () => {
 export const listToGallery = () => {
     return (dispatch, getState) => {
         let state = getState();
-        const { img } = data;
-        const images = { img };
+        let images = [];
+        for (let i of data) {
+            const { img } = i;
+            images.push({
+                img
+            });
+        }
         if (state.images.emptyGallery === true) {
             dispatch(imgArray(images));
             dispatch(addGallery(false));
@@ -136,5 +156,36 @@ export const listToGallery = () => {
 };
 
 export const toIcon = () => {
-    return (/*dispatch*/) => { };
+    return (dispatch, getState) => {
+        let state = getState();
+        if (state.view.selectedImages === '') {
+            dispatch(imageSelect());     //dispacciare una sola img!!!!! oppure tutto l'object e scorrerlo con ciclo for
+        }
+        dispatch(succesImg(true));
+    };
+};
+
+export const PreviousNext = () => {             //modifiche 15:45
+    return (dispatch, getState) => {                //
+        let state = getState();                     //   spostare in 'toIcon'
+        if (state.view.buttonEnable === true) {     //      -> dove richiamare le funz
+            dispatch(setButton(1, 0));              //         next()   e
+        }                                           //         previous()
+//------------------------------------------------------------------------
+        function next(images) {
+            let i = 0;
+            if (state.view.button.next <= images.length) {
+                ++i;
+                dispatch(imageSelect(images[i]));
+            }
+            function previous(images) {
+                let i = 0;
+                if (state.view.button.previous > 0) {
+                    --i;
+                    dispatch(imageSelect(images[i]));
+                }
+            }
+//---------------------------------------------------------------------------
+        }
+    };
 };

@@ -8,7 +8,7 @@ export default class Click extends Component {
     }
 
     handleClick() {
-        this.props.dispatchList(event); 
+        this.props.dispatchList(event);
     }
 
     render () {
