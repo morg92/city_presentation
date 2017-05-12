@@ -4,11 +4,11 @@ import { ADD_ICON } from '../costants/costants.js';
 import { IMG } from '../costants/costants.js';
 import { ADD_GALLERY } from '../costants/costants.js';
 import { BUTT_ENABLE } from '../costants/costants.js';
-import { SUCCES } from '../costants/costants.js';
 import { ADD_LIST } from '../costants/costants.js';
 import { INFO } from '../costants/costants.js';
 import { data } from '../costants/costants.js';
 import { SET_BUTT } from '../costants/costants.js';      //modifiche 15:45
+import { SEL_IMG } from '../costants/costants.js';
 
 
 function isLoading(isLoaded) {
@@ -29,18 +29,18 @@ function isError(error) {
     };
 }
 
-function succesImg(succes) {
+function addIcon(emptyIcon) {
     return {
-        type: SUCCES,
+        type: ADD_ICON,
         payload: {
-            succes: succes
+            emptyIcon: emptyIcon
         }
     };
 }
 
 function imageSelect(selectedImages) {
     return {
-        type: ADD_ICON,
+        type: SEL_IMG,
         payload: {
             selectedImages: selectedImages
         }
@@ -104,8 +104,6 @@ function setButton(previous, next) {     //modifiche 15:45
 
 
 
-
-
 export const goEvent = () => {
     return (dispatch, getState) => {
         let state = getState();
@@ -158,34 +156,51 @@ export const listToGallery = () => {
 export const toIcon = () => {
     return (dispatch, getState) => {
         let state = getState();
-        if (state.view.selectedImages === '') {
-            dispatch(imageSelect());     //dispacciare una sola img!!!!! oppure tutto l'object e scorrerlo con ciclo for
+        if (state.view.emptyIcon === true) {
+            dispatch(addIcon(false));
         }
-        dispatch(succesImg(true));
     };
 };
+//-----------------------------------------------------------TEST OK!!!---------------------------------------------------------------
 
-export const PreviousNext = () => {             //modifiche 15:45
+
+
+
+
+//----------------------------------INCOMPLETA!!!-------------------------------------------------------------------------------------
+export const previousNext = () => {             //modifiche 15:45
     return (dispatch, getState) => {                //
         let state = getState();                     //   spostare in 'toIcon'
         if (state.view.buttonEnable === true) {     //      -> dove richiamare le funz
             dispatch(setButton(1, 0));              //         next()   e
-        }                                           //         previous()
+        }                                             //         previous()
+//-----------------PROVA ARRAY-----------------------------------------------------------------------------------------------------------
+        let images = [                                                                                                  //-----------
+            'https://cdn.balticlivecam.com/images/Vilnius-Panorama.jpg',                                                  //-------
+            'http://www.nightlife-cityguide.com/wp-content/uploads/2014/12/vilnius-cosa-vedere-town-hall-municipio.jpg',  //------
+            'http://www.nationsonline.org/gallery/Lithuania/St-Annes-church-Vilnius.jpg'                                 //----------
+        ];                                                                                            //--------------------------
+        next(images, state);                                    //-------------------------------------------------------------------------
+        previous(images, state);                       //-------------------------------------------------------------------------------
+    };                                     //------------------------------------------------------------------------------------
+};                                 //---------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------
-        function next(images) {
-            let i = 0;
-            if (state.view.button.next <= images.length) {
-                ++i;
-                dispatch(imageSelect(images[i]));
-            }
-            function previous(images) {
-                let i = 0;
-                if (state.view.button.previous > 0) {
-                    --i;
-                    dispatch(imageSelect(images[i]));
-                }
-            }
-//---------------------------------------------------------------------------
+function next(images, state) {                          //------------FUNZ PER BUTTON ICON--------------------------
+    return (dispatch) => {
+        let i = 0;
+        if (state.view.button.next <= images.length) {
+            ++i;
+            dispatch(imageSelect(images[i]));
         }
     };
-};
+}
+function previous(images, state) {
+    return (dispatch) => {
+        let i = 0;
+        if (state.view.button.previous > 0) {
+            --i;
+            dispatch(imageSelect(images[i]));
+        }
+    };
+}
+//--------------------------------------------------------------------------------------------------------------------------------------

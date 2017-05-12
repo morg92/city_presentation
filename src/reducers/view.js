@@ -1,13 +1,11 @@
 import { ADD_ICON } from '../costants/costants.js';
-import { BUTT_ENABLE } from '../costants/costants.js';
-import { SUCCES } from '../costants/costants.js';
+import { SEL_IMG } from '../costants/costants.js';
 import { SET_BUTT } from '../costants/costants.js';
 
 function initialState() {
     return {
         selectedImages: '',
-        buttonEnable: false,
-        succes: false,
+        emptyIcon: true,
         button: {                  //modifiche 15:45
             previous: '',
             next: ''
@@ -20,19 +18,13 @@ export default function view(state = initialState(), action) {
         case ADD_ICON:
             return {
                 ...state,
+                emptyIcon: action.payload.emptyIcon
+            };
+
+        case SEL_IMG:
+            return {
+                ...state,
                 selectedImages: action.payload.selectedImages
-            };
-
-        case BUTT_ENABLE:
-            return {
-                ...state,
-                buttonEnable: action.payload.buttonIconEnable
-            };
-
-        case SUCCES:
-            return {
-                ...state,
-                succes: action.payload.succes
             };
 
         case SET_BUTT:                       //modifiche 15:45

@@ -29,7 +29,7 @@ export default class Icon extends Component {
     render() {
         return (
             <div className="icon">
-                <button className="previous" onClick={this.handleClick}>Previous</button>       
+                <button className="previous" onClick={this.handleClick}>Previous</button>
                 <button className="next" onClick={this.handleClick}>Next</button>
             </div>
         );

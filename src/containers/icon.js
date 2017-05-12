@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Icon from '../components/icon.js';
-import { setButton } from '../actions/actions.js';
+import { previousNext } from '../actions/actions.js';
 
 let mapStateToProps = (selectedImages) => {
     return {
@@ -11,7 +11,7 @@ let mapStateToProps = (selectedImages) => {
 let mapDispatchToProps = (dispatch) => {        //modifiche 15:45
     return ({
         dispatchToSetButton: () => {
-            dispatch(setButton());
+            dispatch(previousNext());
         }
     });
 };
