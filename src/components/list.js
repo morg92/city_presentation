@@ -21,6 +21,7 @@ export default class List extends Component {
                     <td>{infoSingle.name}</td>
                     <td><a href={infoSingle.descrizione}>Wika</a></td>
                     <td>{infoSingle.anno_fondazione}</td>
+                    <td><input type="button" className="ButtonList" value="Show" onClick={this.handleGallery}/></td>
                 </tr>
             ));
         }
@@ -32,12 +33,12 @@ export default class List extends Component {
                         <tr key="tu">
                             <th>Nome</th>
                             <th>Discover</th>
-                            <th colSpan="3">Foundation</th>
+                            <th>Foundation</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         {infoCity}
-
                     </tbody>
                 </table>
             </div>

@@ -15,39 +15,18 @@ export default class Gallery extends Component {
     }
 
     render() {
-        let view;
-        if (this.props.viewDivImg) {
-            view = (this.props.viewDivImg.map((image) => <img src={image} />));
+        let immagini;
+        if (this.props.immagini) {
+            immagini = (this.props.immagini.map((allImg, k) =>
+                <div className="insideGallery" key={'divGallery' + k}>
+                    <img src={allImg.img[0]} />
+                </div>
+            ));
         }
         return (
             <div className="gallery">
-                <button className="insideGallery" onClick={this.handleClickToIcon}>
-                    {view}
-                </button>
+                {immagini}
             </div>
         );
     }
 }
-
-/*
-//--------------------------------------------------------------------------
-var ResultGallery = React.createClass({
-            render: function () {
-                return (
-                    <div>
-                        {this.props.img.map(function (images) {
-                            return <ResultItem result={images} />;
-                        })
-                        }
-                    </div>
-                );
-            }
-        });
-
-        var ResultItem = React.createClass({
-            render: function () {
-                return (
-                    <div> return {this.props.images}; </div>
-                );
-            }
-        });*/

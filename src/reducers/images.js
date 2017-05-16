@@ -15,7 +15,7 @@ export default function images(state = initialState(), action) {
         case IMG:
             return {
                 ...state,
-                img: [action.payload.img]
+                img: action.payload.img
             };
 
         case ADD_GALLERY:

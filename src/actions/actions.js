@@ -113,7 +113,6 @@ export const goEvent = () => {
             }
             if (state.choose.info != null) {
                 dispatch(isLoading(true));
-                console.log('riempio info!');
             }
             /*else {
                 dispatch(isError(true));
@@ -132,15 +131,22 @@ export const listToGallery = () => {
         let state = getState();
         const images = [];
         for (let i of data) {
-            const { img } = i;
-            images.push({
+            const  img  = i;
+            images.push(
                 img
-            });
+            );
         }
         if (state.images.emptyGallery === true) {
-                                                       //in GALLERY images[n] --> visulalizza n div(img)
+            dispatch(imgArray(images));
             dispatch(addGallery(false));
         }
+//-------------------------------------PROVA-------------------------------------------------------------------------------------------
+       /* for (let index of images) {
+            for (let i of index) {
+                console.log(i);
+            }
+        }*/
+//--------------------------------------------------------------------------------------------------------------------------------------
     };
 };
 
@@ -156,12 +162,12 @@ export const toIcon = () => {
 
 //---------------------------------------INCOMPLETA---------------------------------------------------------------------
 export const previousNext = (num) => {
-    return (dispatch) => {
-        let next = 0;
+    return (/*dispatch*/) => {
+        //let next = 0;
         //let previous = images.length;
 
         if (num == 1) {
-            ++next;
+            // ++next;
             //dispatch(imageSelect(images[next]));
         }
         else if (num == -1) {
