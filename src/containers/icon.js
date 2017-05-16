@@ -2,21 +2,21 @@ import { connect } from 'react-redux';
 import Icon from '../components/icon.js';
 import { previousNext } from '../actions/actions.js';
 
-let mapStateToProps = (selectedImages) => {
+let mapStateToProps = (state) => {
     return {
-        selectedImages
+        selectedImages: state.selectedImages
     };
 };
 
-let mapDispatchToProps = (dispatch) => {        //modifiche 15:45
+let mapDispatchToProps = (dispatch) => {
     return ({
-        dispatchToSetButton: () => {
-            dispatch(previousNext());
+        dispatchToSetButton: (num) => {
+            dispatch(previousNext(num));
         }
     });
 };
 
 export default connect(
     mapStateToProps,
-    mapDispatchToProps                //modifiche 15:45
+    mapDispatchToProps
 )(Icon);

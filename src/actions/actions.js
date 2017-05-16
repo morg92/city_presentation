@@ -7,7 +7,6 @@ import { BUTT_ENABLE } from '../costants/costants.js';
 import { ADD_LIST } from '../costants/costants.js';
 import { INFO } from '../costants/costants.js';
 import { data } from '../costants/costants.js';
-import { SET_BUTT } from '../costants/costants.js';      //modifiche 15:45
 import { SEL_IMG } from '../costants/costants.js';
 
 
@@ -47,11 +46,11 @@ function imageSelect(selectedImages) {
     };
 }
 
-function imgArray(json) {
+function imgArray(jason) {
     return {
         type: IMG,
         payload: {
-            img: json
+            img: jason
         }
     };
 }
@@ -92,16 +91,6 @@ function sendCityToList(json) {
     };
 }
 
-function setButton(previous, next) {     //modifiche 15:45
-    return {
-        type: SET_BUTT,
-        payload: {
-            previous: previous,
-            next: next
-        }
-    };
-}
-
 
 
 export const goEvent = () => {
@@ -109,36 +98,39 @@ export const goEvent = () => {
         let state = getState();
         let city = [];
         for (let i of data) {
-            const { name, anno_fondazione, descrizione } = i;
+            const { name, anno_fondazione, descrizione, img } = i;
             city.push({
                 name,
                 anno_fondazione,
-                descrizione
+                descrizione,
+                img
             });
         }
-
         setTimeout(() => {
             if (state.choose.emptyList === true) {
                 dispatch(sendCityToList(city));
                 dispatch(addList(false));
             }
-            if (state.choose.info !== null) {
+            if (state.choose.info != null) {
                 dispatch(isLoading(true));
+                console.log('riempio info!');
             }
-            else {
+            /*else {
                 dispatch(isError(true));
                 alert('Loading fail!');
             }
-        }, 5000);
+            console.log('info->'+state.choose.info);*/
+        }, 1000);
 
         dispatch(enableButton(true));
     };
 };
 
+
 export const listToGallery = () => {
     return (dispatch, getState) => {
         let state = getState();
-        let images = [];
+        const images = [];
         for (let i of data) {
             const { img } = i;
             images.push({
@@ -146,46 +138,47 @@ export const listToGallery = () => {
             });
         }
         if (state.images.emptyGallery === true) {
-            dispatch(imgArray(images));
+                                                       //in GALLERY images[n] --> visulalizza n div(img)
             dispatch(addGallery(false));
         }
-        dispatch(enableButton(true));
     };
 };
 
 export const toIcon = () => {
     return (dispatch, getState) => {
-        let state = getState();
+        let state = getState();          //array contenente img rif a città--> mostrare img[0] poi schiacciando next genera event
         if (state.view.emptyIcon === true) {
             dispatch(addIcon(false));
         }
+        //dispatch(imageSelect(---> prima img della città selezionata!!
     };
 };
-//-----------------------------------------------------------TEST OK!!!---------------------------------------------------------------
+
+//---------------------------------------INCOMPLETA---------------------------------------------------------------------
+export const previousNext = (num) => {
+    return (dispatch) => {
+        let next = 0;
+        //let previous = images.length;
+
+        if (num == 1) {
+            ++next;
+            //dispatch(imageSelect(images[next]));
+        }
+        else if (num == -1) {
+            //--previous;
+            //dispatch(imageSelect(images[previous]));
+        }
+    };
+};
 
 
 
 
 
-//----------------------------------INCOMPLETA!!!-------------------------------------------------------------------------------------
-export const previousNext = () => {             //modifiche 15:45
-    return (dispatch, getState) => {                //
-        let state = getState();                     //   spostare in 'toIcon'
-        if (state.view.buttonEnable === true) {     //      -> dove richiamare le funz
-            dispatch(setButton(1, 0));              //         next()   e
-        }                                             //         previous()
-//-----------------PROVA ARRAY-----------------------------------------------------------------------------------------------------------
-        let images = [                                                                                                  //-----------
-            'https://cdn.balticlivecam.com/images/Vilnius-Panorama.jpg',                                                  //-------
-            'http://www.nightlife-cityguide.com/wp-content/uploads/2014/12/vilnius-cosa-vedere-town-hall-municipio.jpg',  //------
-            'http://www.nationsonline.org/gallery/Lithuania/St-Annes-church-Vilnius.jpg'                                 //----------
-        ];                                                                                            //--------------------------
-        next(images, state);                                    //-------------------------------------------------------------------------
-        previous(images, state);                       //-------------------------------------------------------------------------------
-    };                                     //------------------------------------------------------------------------------------
-};                                 //---------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------
-function next(images, state) {                          //------------FUNZ PER BUTTON ICON--------------------------
+
+//---------------------------------FUNZ NEXT_PREVIOUS------------------------------------------------------------------------------------
+/*
+function next(images, state) {
     return (dispatch) => {
         let i = 0;
         if (state.view.button.next <= images.length) {
@@ -196,11 +189,12 @@ function next(images, state) {                          //------------FUNZ PER B
 }
 function previous(images, state) {
     return (dispatch) => {
-        let i = 0;
+        let i = images.length;
         if (state.view.button.previous > 0) {
             --i;
             dispatch(imageSelect(images[i]));
         }
     };
 }
+*/
 //--------------------------------------------------------------------------------------------------------------------------------------

@@ -27,7 +27,7 @@ export default function choose(state = initialState(), action) {
         case INFO:
             return {
                 ...state,
-                info: [action.payload.info]
+                info: action.payload.info
             };
 
         default:

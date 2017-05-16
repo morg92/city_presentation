@@ -3,9 +3,6 @@ import React, { Component } from 'react';
 export default class List extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            info: ''
-        };
 
         this.handleGallery = this.handleGallery.bind(this);
     }
@@ -16,38 +13,34 @@ export default class List extends Component {
     }
 
     render() {
+
+        let infoCity;
+        if (this.props.infoCity) {
+            infoCity = (this.props.infoCity.map((infoSingle, i) =>
+                <tr key={'io' + i}>
+                    <td>{infoSingle.name}</td>
+                    <td><a href={infoSingle.descrizione}>Wika</a></td>
+                    <td>{infoSingle.anno_fondazione}</td>
+                </tr>
+            ));
+        }
+
         return (
-            <div>
-                <ul>
-                    <li>
-                        <p>{/*this.props.city.name*/}</p>
-                        <p>{/*this.ptops.city.anno_fondazione*/}</p>
-                        <a href={this.props.city/*.descrizione*/}>Descrizione</a>
-                        <button onClick={this.handleGallery} value="GO!"></button>
-                    </li>
-                </ul>
+            <div className="list">
+                <table>
+                    <thead>
+                        <tr key="tu">
+                            <th>Nome</th>
+                            <th>Discover</th>
+                            <th colSpan="3">Foundation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {infoCity}
+
+                    </tbody>
+                </table>
             </div>
         );
     }
 }
-
-/*
-var ResultList = React.createClass({
-    render: function() {
-        return (
-            <ul>
-                {this.props.img.map(function(images) {
-                    return <ResultItem result={images} />;
-                })}
-            </ul>
-        );
-    }
-});
-
-var ResultItem = React.createClass({
-    render: function() {
-        return (
-            <li> return {this.props.images}; </li>
-        );
-    }
-});*/

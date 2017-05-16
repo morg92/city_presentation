@@ -16,6 +16,27 @@ body {
     overflow: scroll;
 }
 
+table {
+    display: table;
+    border-collapse: collapse;
+    border-spacing: 2px;
+    border: 1px solid darkgray;
+    margin: 0 auto;
+    padding: 8px;
+    border-radius: 4px;
+    position: relative;
+    top: 40px;
+}
+
+tr,th {
+    border: 1px solid darkgray;
+    border-collapse: collapse;
+    padding: 12px;
+    border-spacing: 2px;
+    font-size: 14pt;
+    text-align: center;
+}
+
 .icon {
     border: 2px solid orange;
     width: 600px;
@@ -49,4 +70,11 @@ body {
     width: 500px;
     height: 100px;
     margin:  0 auto;
+}
+
+.insideGallery {
+    border:  1px solid black;
+    width: 70px;
+    height: 70px;
+    margin: 10px;
 }

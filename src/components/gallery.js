@@ -6,12 +6,24 @@ export default class Gallery extends Component {
         this.state = {
             img: ''
         };
+
+        this.handleClickToIcon = this.handleClickToIcon.bind(this);
+    }
+
+    handleClickToIcon(value) {
+        this.props.dispatchToIcon(value);
     }
 
     render() {
+        let view;
+        if (this.props.viewDivImg) {
+            view = (this.props.viewDivImg.map((image) => <img src={image} />));
+        }
         return (
             <div className="gallery">
-                {/*this.props.images.img*/''}
+                <button className="insideGallery" onClick={this.handleClickToIcon}>
+                    {view}
+                </button>
             </div>
         );
     }
