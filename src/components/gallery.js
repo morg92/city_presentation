@@ -18,9 +18,9 @@ export default class Gallery extends Component {
         let immagini;
         if (this.props.immagini) {
             immagini = (this.props.immagini.map((allImg, k) =>
-                <div className="insideGallery" key={'divGallery' + k}>
-                    <img src={allImg.img[0]} />
-                </div>
+                <button className="insideGallery" key={'divGallery' + k} onClick={this.handleClickToIcon}>
+                    <img src=/*{allImg.img[0]}*/{allImg} />
+                </button>
             ));
         }
         return (

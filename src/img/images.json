@@ -1,5 +1,5 @@
-[
-    {
+{
+    "amsterdam": {
         "name": "Amsterdam",
         "anno_fondazione": "1275",
         "descrizione": "https://it.wikipedia.org/wiki/Amsterdam",
@@ -9,7 +9,7 @@
             "https://o.aolcdn.com/images/dims3/GLOB/crop/4320x2273+0+303/resize/1200x630!/format/jpg/quality/85/http%3A%2F%2Fo.aolcdn.com%2Fhss%2Fstorage%2Fmidas%2F600318eae7ff92e9a019ddac9ef567d%2F205142277%2Ftulips-with-canal-houses-of-amsterdam-picture-id467232890"
         ]
     },
-    {
+    "berlin": {
         "name": "Berlin",
         "anno_fondazione": "1237",
         "descrizione": "https://it.wikipedia.org/wiki/Berlino",
@@ -19,7 +19,7 @@
             "https://upload.wikimedia.org/wikipedia/commons/1/1f/Schloss_Charlottenburg_in_Berlin_as_seen_from_park.jpg"
         ]
     },
-    {
+    "vilnius": {
         "name": "Vilnius",
         "anno_fondazione": "1323",
         "descrizione": "https://it.wikipedia.org/wiki/Vilnius",
@@ -29,4 +29,4 @@
             "http://www.nationsonline.org/gallery/Lithuania/St-Annes-church-Vilnius.jpg"
         ]
     }
-]
+}

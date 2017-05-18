@@ -4,7 +4,7 @@ import { previousNext } from '../actions/actions.js';
 
 let mapStateToProps = (state) => {
     return {
-        selectedImages: state.selectedImages
+        selectedImages: state.view.selectedImages
     };
 };
 

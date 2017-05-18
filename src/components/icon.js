@@ -13,8 +13,19 @@ export default class Icon extends Component {
 
 
     render() {
+
+        let view;
+        if (this.props.view) {
+            view = (this.props.view.map((selectedImages) =>
+                <img src={selectedImages} />
+            ));
+        }
+
         return (
             <div className="icon">
+                <div className="insideIcon">
+                    {view}
+                </div>
                 <button className="previous" onClick={this.handleClick(-1)}>Previous</button>
                 <button className="next" onClick={this.handleClick(1)}>Next</button>
             </div>

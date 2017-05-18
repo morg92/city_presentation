@@ -46,11 +46,11 @@ function imageSelect(selectedImages) {
     };
 }
 
-function imgArray(jason) {
+function imgArray(img) {
     return {
         type: IMG,
         payload: {
-            img: jason
+            img: img
         }
     };
 }
@@ -82,11 +82,11 @@ function enableButton(buttonEnable) {
     };
 }
 
-function sendCityToList(json) {
+function sendCityToList(info) {
     return {
         type: INFO,
         payload: {
-            info: json
+            info: info
         }
     };
 }
@@ -97,15 +97,28 @@ export const goEvent = () => {
     return (dispatch, getState) => {
         let state = getState();
         let city = [];
-        for (let i of data) {
-            const { name, anno_fondazione, descrizione, img } = i;
+        //-------------------------------------------------------------------------------------------------------------------
+        /*for (let i of data) {
+            const { name, anno_fondazione, descrizione } = i;
             city.push({
                 name,
                 anno_fondazione,
-                descrizione,
-                img
+                descrizione
+            });
+        }*/
+        //-------------------------------------------------------------------------------------------------------------------
+        //---new data---18_maggio_15_:_11--------------------------------------
+        for (let key in data) {
+            city.push({
+                key: key,
+                name: data[key].name,
+                descrizione: data[key].descrizione,
+                anno_fondazione: data[key].anno_fondazione
             });
         }
+        console.log('--city---');
+        console.log(city);
+        //---------fine_new_data-----------------------------------------------
         setTimeout(() => {
             if (state.choose.emptyList === true) {
                 dispatch(sendCityToList(city));
@@ -117,36 +130,75 @@ export const goEvent = () => {
             /*else {
                 dispatch(isError(true));
                 alert('Loading fail!');
-            }
-            console.log('info->'+state.choose.info);*/
+            }*/
+            console.log('info->' + state.choose.info);
         }, 1000);
-
         dispatch(enableButton(true));
+        //------------------------------------------------PROVA_NEW_JSON----------------------------------------------------------------
+        /*console.log('---data---');
+        console.log(data);
+        console.log('---DATA.AMSTERDAM');
+        console.log(data.amsterdam);
+        console.log(data.amsterdam.img[0]);
+        console.log('<<<<<<<>>>>>>>><<<<>>><');
+        console.log('SONO FUORI DAL FOR');
+        for (let i in data) {
+            console.log('SONO DENTRO IL FOR');
+            console.log('---key---');
+            console.log(i);
+            console.log('---foundation---');
+            console.log(data[i].anno_fondazione);
+            console.log(data[i].img[2]);
+            console.log('---fine_giro---');
+        }*/
+        //-----------------------------------------------FINE_PROVA_NEW_JSON------------------------------------------------------------
     };
 };
 
 
-export const listToGallery = () => {
+export const listToGallery = (value) => {
     return (dispatch, getState) => {
         let state = getState();
-        const images = [];
-        for (let i of data) {
-            const  img  = i;
-            images.push(
-                img
+        //console.log('value ->'+ value);
+        //const keys = [];
+        //const images = [];
+        const kImg = [];
+        for (let i in data) {
+            kImg.push({
+                key: i,
+                img: data[i].img
+            });
+            /*keys.push(
+                i
             );
+            images.push(
+                data[i].img
+            );*/
+        }
+
+        //-------------LOG--------------------------
+        console.log('---kIng---');
+        console.log(kImg);
+        /*console.log('---keys---');
+        console.log(keys);
+        console.log('---images---');
+        console.log(images);*/
+
+        console.log('<<<<<>>>>><<<<<>>>>');
+
+        //------------FINE_LOG---------------------
+        let imagesGallery = [];
+        for (let i in kImg) {
+            if (kImg[i].key === /*value*/ 'berlin') {
+                imagesGallery = kImg[i].img;
+                console.log('--img--');
+                console.log(imagesGallery);
+                dispatch(imgArray(imagesGallery));
+            }
         }
         if (state.images.emptyGallery === true) {
-            dispatch(imgArray(images));
             dispatch(addGallery(false));
         }
-//-------------------------------------PROVA-------------------------------------------------------------------------------------------
-       /* for (let index of images) {
-            for (let i of index) {
-                console.log(i);
-            }
-        }*/
-//--------------------------------------------------------------------------------------------------------------------------------------
     };
 };
 
@@ -156,7 +208,7 @@ export const toIcon = () => {
         if (state.view.emptyIcon === true) {
             dispatch(addIcon(false));
         }
-        //dispatch(imageSelect(---> prima img della città selezionata!!
+        //dispatch(imageSelect());
     };
 };
 

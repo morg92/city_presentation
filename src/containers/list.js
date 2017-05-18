@@ -10,8 +10,8 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
     return ({
-        dispatchGallery: () => {
-            dispatch(listToGallery());
+        dispatchGallery: (value) => {
+            dispatch(listToGallery(value));
         }
     });
 };

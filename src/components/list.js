@@ -18,10 +18,11 @@ export default class List extends Component {
         if (this.props.infoCity) {
             infoCity = (this.props.infoCity.map((infoSingle, i) =>
                 <tr key={'io' + i}>
+                    <td>{infoSingle.key}</td>
                     <td>{infoSingle.name}</td>
                     <td><a href={infoSingle.descrizione}>Wika</a></td>
                     <td>{infoSingle.anno_fondazione}</td>
-                    <td><input type="button" className="ButtonList" value="Show" onClick={this.handleGallery}/></td>
+                    <td><input type="button" className="ButtonList" value="Show" onClick={this.handleGallery} /*disabled={}*//></td>
                 </tr>
             ));
         }
@@ -31,6 +32,7 @@ export default class List extends Component {
                 <table>
                     <thead>
                         <tr key="tu">
+                            <th>key</th>
                             <th>Nome</th>
                             <th>Discover</th>
                             <th>Foundation</th>

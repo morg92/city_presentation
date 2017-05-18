@@ -57,7 +57,7 @@ img {
 
 .previous {
     text-align: left;
-    margin-top: 35%;
+    /*margin-top: 5%;*/
     display: inline-block;
 }
 
@@ -81,4 +81,13 @@ img {
 
 .insideGallery {
     display: inline;
+    width: 200px;
+    height: 100px;
+}
+
+.insideIcon {
+    border: 1px solid darkcyan;
+    width: 530px;
+    height: 380px;
+    margin: 35px;
 }

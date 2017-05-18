@@ -7,7 +7,8 @@ export default class Click extends Component {
         this.handleClick = this.handleClick.bind(this);
     }
 
-    handleClick() {
+    handleClick(event) {
+        event.preventDefault();
         this.props.dispatchList(event);
     }
 
