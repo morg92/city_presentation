@@ -7,7 +7,7 @@ export default class List extends Component {
         this.handleGallery = this.handleGallery.bind(this);
     }
 
-    handleGallery(event) {
+    handleGallery(event) { () =>
         event.preventDefault();
         this.props.dispatchGallery(event);
     }
@@ -22,7 +22,7 @@ export default class List extends Component {
                     <td>{infoSingle.name}</td>
                     <td><a href={infoSingle.descrizione}>Wika</a></td>
                     <td>{infoSingle.anno_fondazione}</td>
-                    <td><input type="button" className="ButtonList" value="Show" onClick={this.handleGallery} /*disabled={}*//></td>
+                    <td><input type="button" className="ButtonList" value="Show" onClick={() => this.handleGallery(infoSingle.key)} /*disabled={}*/ /></td>
                 </tr>
             ));
         }

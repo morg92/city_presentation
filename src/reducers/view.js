@@ -3,7 +3,7 @@ import { SEL_IMG } from '../costants/costants.js';
 
 function initialState() {
     return {
-        selectedImages: '',
+        selectedImages: null,
         emptyIcon: true
     };
 }

@@ -10,8 +10,8 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
     return ({
-        dispatchToSetButton: (num) => {
-            dispatch(previousNext(num));
+        dispatchToSetButton: (event) => {
+            dispatch(previousNext(event));
         }
     });
 };

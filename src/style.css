@@ -73,7 +73,7 @@ img {
 
 .gallery {
     border: 2px solid darkcyan;
-    width: 600px;
+    width: 650px;
     height: 100px;
     margin:  0 auto;
     padding: 8px;
@@ -81,8 +81,8 @@ img {
 
 .insideGallery {
     display: inline;
-    width: 200px;
-    height: 100px;
+    /*width: 200px;
+    height: 100px;*/
 }
 
 .insideIcon {
