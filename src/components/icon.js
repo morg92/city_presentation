@@ -4,15 +4,10 @@ export default class Icon extends Component {
     constructor(props) {
         super(props);
 
-        this.handlePrevious = this.handlePrevious.bind(this);
-        this.handleNext = this.handleNext.bind(this);
+        this.handlePreviousNext = this.handlePreviousNext.bind(this);
     }
 
-    handlePrevious(event) {
-        event.preventDefault();
-        this.props.dispatchToSetButton(event);
-    }
-    handleNext(event) {
+    handlePreviousNext(event) { () =>
         event.preventDefault();
         this.props.dispatchToSetButton(event);
     }
@@ -22,9 +17,9 @@ export default class Icon extends Component {
 
         let view;
         if (this.props.view) {
-            view = (this.props.view = (viewImages) =>
-                <img src={viewImages.selectedImages} />
-            );
+            view = (this.props.view.map((viewImages) =>
+                <img src={viewImages.selectedImages[0]} />
+            ));
         }
 
         return (
@@ -32,8 +27,8 @@ export default class Icon extends Component {
                 <div className="insideIcon">
                     {view}
                 </div>
-                <button className="previous" onClick={this.handlePrevious}>Previous</button>
-                <button className="next" onClick={this.handleNext}>Next</button>
+                <button className="previous" onClick={() => this.handlePreviousNext(-1)}>Previous</button>
+                <button className="next" onClick={() => this.handlePreviousNext(1)}>Next</button>
             </div>
         );
     }

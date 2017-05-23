@@ -97,7 +97,6 @@ export const goEvent = () => {
     return (dispatch, getState) => {
         let state = getState();
         let city = [];
-        //---new data---18_maggio_15_:_11--------------------------------------
         for (let key in data) {
             city.push({
                 key: key,
@@ -106,9 +105,6 @@ export const goEvent = () => {
                 anno_fondazione: data[key].anno_fondazione
             });
         }
-        //console.log('--city---');
-        //console.log(city);
-        //---------fine_new_data-----------------------------------------------
         setTimeout(() => {
             if (state.choose.emptyList === true) {
                 dispatch(sendCityToList(city));
@@ -121,11 +117,10 @@ export const goEvent = () => {
                 dispatch(isError(true));
                 alert('Loading fail!');
             }*/
-            //console.log('info->' + state.choose.info);//al primo click è sempre = null; doppio-click = true
         }, 1000); //5000
         dispatch(enableButton(true));
 
-//---------------------------------------------PROVA_NEW_JSON----------------------------------------------------------------------------
+        //---------------------------------------------LOG_DI_PROVA----------------------------------------------------------------------------
         /*console.log('---data---');
         console.log(data);
         console.log('---DATA.AMSTERDAM');
@@ -142,9 +137,9 @@ export const goEvent = () => {
             console.log(data[i].img[2]);
             console.log('---fine_giro---');
         }*/
-//--------------------------------------------FINE_PROVA_NEW_JSON------------------------------------------------------------------------
+        //--------------------------------------------FINE_PROVA_NEW_JSON------------------------------------------------------------------------
     };
-};
+};//OK!!!--(CONTROLLARE 'ELSE' ERROR)
 
 
 export const listToGallery = (value) => {
@@ -165,7 +160,6 @@ export const listToGallery = (value) => {
                 //console.log(imagesGallery);
                 //console.log('-->><<-->><<--');
                 dispatch(imgArray(imagesGallery));
-                dispatch(imageSelect(value)); //dispaccia l'img di pos 0
             }
         }
         if (state.images.emptyGallery === true) {
@@ -180,7 +174,6 @@ export const toIcon = (value) => {
         let state = getState();
         if (state.view.emptyIcon === true) {
             dispatch(addIcon(false));
-            //dispatch(imageSelect(value)); //dispaccia l'img di pos 0
         }
         const kImg = [];
         for (let i in data) {
@@ -190,7 +183,6 @@ export const toIcon = (value) => {
             });
         }
         let imgCityView;
-        let keyView;//solo di prova
         for (let i in kImg) {
             for (let j = 0; j < kImg.length; j++) {
                 if (kImg[i].img[j] === value) {
@@ -198,78 +190,93 @@ export const toIcon = (value) => {
                     //console.log('key --> ' + kImg[i].key);
                     //console.log('>>>>>>>>>>>>>>>>');
                     imgCityView = kImg[i].img;
-                    keyView = kImg[i].key; //solo di prova
                 }
             }
         }
-        dispatch(imageSelect(imgCityView));//dispaccia tutte le img che si riferiscono a tale città
+        dispatch(imageSelect(imgCityView));
 
-        //-----------------------------------------------------------------------------------------------------------
-        console.log('*****************************');
-        console.log('stato di selectedImages! --> ' + typeof (state.view.selectedImages));
-        console.log('*****************************');
+        //---------------------LOG_DI_CONTROLLO--------------------------------------------------------------------------------------
+        //console.log('*****************************');
+        //console.log('stato di selectedImages! --> ' + typeof (state.view.selectedImages));
+        //console.log('*****************************');
         //console.log('selectedImages!');
         //console.log(imgCityView);//
         //console.log('key -->  ' + keyView);
         //console.log('------------------------------');
         //-----------------------------------------------------------------------------------------------------------
     };
-};
+};//OK!!!
 
-//---------------------------------------INCOMPLETA---------------------------------------------------------------------
-export const previousNext = () => {
+
+export const previousNext = (value) => {
     return (dispatch, getState) => {
         let state = getState();
-        if (state.view.selectedImages != null) {
-            console.log(state.view.selectedImages);
-            console.log('*****************************');
-            console.log('stato di selectedImages! --> ' + typeof (state.view.selectedImages));
-            console.log('*****************************');
-        }
-        //---------------controllare-----------------------------
-        /*let img = [];
+        let img = [];
         img.push(state.view.selectedImages);
-        console.log('STAMPA IMG --> ');
-        console.log(img);*/
+        let previousButt = img[0].length - 1;
+        let nextButt = 0;
+
+        let previous = new Function();
+        let next = new Function();
+
+        //-----------------------------LOG_DI_PROVA------------------------------------------
+        console.log('--img[0]--');
+        console.log(img[0]);
+        //console.log(img[0][2]);
+        //console.log('previous ->');
+        //console.log(previous);
+        console.log('----------------');
+        //----------------------------------------------------------------------------------
+
+        switch (value) {
+            case -1:
+                previous(previousButt, img);
+                console.log('STO CHIAMANDO LA FUNZIONE PREVIOUS');
+                break;
+
+            case 1:
+                next(nextButt, img);
+                console.log('STO CHIAMANDO LA FUNZIONE NEXT');
+                break;
+
+            default:
+                break;
+        }
+
+
+        previous = function (previousButt, img) {
+            return (dispatch) => {
+
+                console.log('SONO ENTRATO NELLA FUNZIONE PREVIOUS');
+
+                let i = img[0].length - 1;
+                if (previousButt > 0) {
+                    --i;
+                    dispatch(imageSelect(img[0][i]));
+
+                    console.log('****img[0][previous]******');
+                    console.log(img[0][i]);
+                    console.log('**********');
+                }
+            };
+        };
+
+        next = function (nextButt, img) {
+            return (dispatch) => {
+
+                console.log('SONO ENTRATO NELLA FUNZIONE NEXT');
+
+                let j = 0;
+                if (nextButt <= img[0].length) {
+                    ++j;
+                    dispatch(imageSelect(img[0][j]));
+
+                    console.log('++++img[0][next]+++++');
+                    console.log(img[0][j]);
+                    console.log('+++++++++++');
+                }
+            };
+        };
+
     };
 };
-
-
-//--------------------------------------------------------------------------------------------------------------------------------
-         //utilizzabile_se_dispacci_valori_button_(1, -1)----------------------------------------------
-        /*if (num == 1) {
-            //++next;
-            //dispatch(imageSelect(images[next]));
-        }*/
-        /*else if (num == -1) {
-            //--previous;
-            //dispatch(imageSelect(images[previous]));
-        }
-        //----------------------------------------------------------------------------------------------
-//---------------------------------FUNZ_NEXT_PREVIOUS-------------------------------------------------------------------------------
-/*
-function next(images, state) {
-    return (dispatch) => {
-        let i = 0;
-        if (state.view.button.next <= images.length) {
-            ++i;
-            dispatch(imageSelect(images[i]));
-        }
-    };
-}
-function previous(images, state) {
-    return (dispatch) => {
-        let i = images.length;
-        if (state.view.button.previous > 0) {
-            --i;
-            dispatch(imageSelect(images[i]));
-        }
-    };
-}
-*/
-//-----------------------------------------------------------------------------------------------------------------------------------
-/*
-http://www.amsterdam.net/it/wp-content/uploads/sites/20/Prinsengracht.jpg,
-http://www.iostudionews.it/wp-content/uploads/2016/08/AMSTERDAM-Netherlands-1_01.jpg,
-https://o.aolcdn.com/images/dims3/GLOB/crop/4320x2273+0+303/resize/1200x630!/format/jpg/quality/85/http%3A%2F%2Fo.aolcdn.com%2Fhss%2Fstorage%2Fmidas%2F600318eae7ff92e9a019ddac9ef567d%2F205142277%2Ftulips-with-canal-houses-of-amsterdam-picture-id4672328907
-*/
