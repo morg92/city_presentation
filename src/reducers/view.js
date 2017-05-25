@@ -1,10 +1,12 @@
 import { ADD_ICON } from '../costants/costants.js';
 import { SEL_IMG } from '../costants/costants.js';
+import { ADD_ARR_IMG } from '../costants/costants.js';
 
 function initialState() {
     return {
         selectedImages: null,
-        emptyIcon: true
+        emptyIcon: true,
+        images: null
     };
 }
 
@@ -20,6 +22,12 @@ export default function view(state = initialState(), action) {
             return {
                 ...state,
                 selectedImages: action.payload.selectedImages
+            };
+
+        case ADD_ARR_IMG:
+            return {
+                ...state,
+                images: action.payload.images
             };
 
         default:

@@ -8,6 +8,7 @@ import { ADD_LIST } from '../costants/costants.js';
 import { INFO } from '../costants/costants.js';
 import { data } from '../costants/costants.js';
 import { SEL_IMG } from '../costants/costants.js';
+import { ADD_ARR_IMG } from '../costants/costants.js';
 
 
 function isLoading(isLoaded) {
@@ -91,6 +92,15 @@ function sendCityToList(info) {
     };
 }
 
+function addArrImg(images) {
+    return {
+        type: ADD_ARR_IMG,
+        payload: {
+            images: images
+        }
+    };
+}
+
 
 
 export const goEvent = () => {
@@ -117,29 +127,10 @@ export const goEvent = () => {
                 dispatch(isError(true));
                 alert('Loading fail!');
             }*/
-        }, 1000); //5000
+        }, 1000);//5000
         dispatch(enableButton(true));
-
-        //---------------------------------------------LOG_DI_PROVA----------------------------------------------------------------------------
-        /*console.log('---data---');
-        console.log(data);
-        console.log('---DATA.AMSTERDAM');
-        console.log(data.amsterdam);
-        console.log(data.amsterdam.img[0]);
-        console.log('<<<<<<<>>>>>>>><<<<>>><');
-        console.log('SONO FUORI DAL FOR');
-        for (let i in data) {
-            console.log('SONO DENTRO IL FOR');
-            console.log('---key---');
-            console.log(i);
-            console.log('---foundation---');
-            console.log(data[i].anno_fondazione);
-            console.log(data[i].img[2]);
-            console.log('---fine_giro---');
-        }*/
-        //--------------------------------------------FINE_PROVA_NEW_JSON------------------------------------------------------------------------
     };
-};//OK!!!--(CONTROLLARE 'ELSE' ERROR)
+};//--(CONTROLLARE 'ELSE' -> ERROR)!!
 
 
 export const listToGallery = (value) => {
@@ -152,131 +143,80 @@ export const listToGallery = (value) => {
                 img: data[i].img
             });
         }
-        let imagesGallery = [];
         for (let i in kImg) {
             if (kImg[i].key === value) {
-                imagesGallery = kImg[i].img;
-                //console.log('--<<>>--<<>>--');
-                //console.log(imagesGallery);
-                //console.log('-->><<-->><<--');
-                dispatch(imgArray(imagesGallery));
+                dispatch(imgArray(kImg[i].img));
+                dispatch(imageSelect(kImg[i].img[0]));
+                console.log('selectedImages');
+                console.log(kImg[i].img[0]);
+                console.log('/*--*/');
+                dispatch(addArrImg(kImg[i].img));
             }
         }
         if (state.images.emptyGallery === true) {
             dispatch(addGallery(false));
         }
     };
-};//OK!!!
+};
 
 
-export const toIcon = (value) => {
-    return (dispatch, getState) => {
-        let state = getState();
-        if (state.view.emptyIcon === true) {
-            dispatch(addIcon(false));
-        }
-        const kImg = [];
-        for (let i in data) {
-            kImg.push({
-                key: i,
-                img: data[i].img
-            });
-        }
-        let imgCityView;
-        for (let i in kImg) {
-            for (let j = 0; j < kImg.length; j++) {
-                if (kImg[i].img[j] === value) {
-                    //console.log('<<<<<<<<<<<<<<<<');
-                    //console.log('key --> ' + kImg[i].key);
-                    //console.log('>>>>>>>>>>>>>>>>');
-                    imgCityView = kImg[i].img;
-                }
-            }
-        }
-        dispatch(imageSelect(imgCityView));
-
-        //---------------------LOG_DI_CONTROLLO--------------------------------------------------------------------------------------
-        //console.log('*****************************');
-        //console.log('stato di selectedImages! --> ' + typeof (state.view.selectedImages));
-        //console.log('*****************************');
-        //console.log('selectedImages!');
-        //console.log(imgCityView);//
-        //console.log('key -->  ' + keyView);
-        //console.log('------------------------------');
-        //-----------------------------------------------------------------------------------------------------------
-    };
-};//OK!!!
-
-
-export const previousNext = (value) => {
+export const toIcon = (num) => {
     return (dispatch, getState) => {
         let state = getState();
         let img = [];
-        img.push(state.view.selectedImages);
-        let previousButt = img[0].length - 1;
-        let nextButt = 0;
 
-        let previous = new Function();
-        let next = new Function();
-
-        //-----------------------------LOG_DI_PROVA------------------------------------------
-        console.log('--img[0]--');
-        console.log(img[0]);
-        //console.log(img[0][2]);
-        //console.log('previous ->');
-        //console.log(previous);
-        console.log('----------------');
-        //----------------------------------------------------------------------------------
-
-        switch (value) {
-            case -1:
-                previous(previousButt, img);
-                console.log('STO CHIAMANDO LA FUNZIONE PREVIOUS');
-                break;
-
-            case 1:
-                next(nextButt, img);
-                console.log('STO CHIAMANDO LA FUNZIONE NEXT');
-                break;
-
-            default:
-                break;
+        if (state.view.emptyIcon === true) {
+            dispatch(addIcon(false));
         }
 
+        img = state.view.images;
+        let length = img.length - 1;
 
-        previous = function (previousButt, img) {
-            return (dispatch) => {
-
-                console.log('SONO ENTRATO NELLA FUNZIONE PREVIOUS');
-
-                let i = img[0].length - 1;
-                if (previousButt > 0) {
-                    --i;
-                    dispatch(imageSelect(img[0][i]));
-
-                    console.log('****img[0][previous]******');
-                    console.log(img[0][i]);
-                    console.log('**********');
+        //-------------------------------------------------------LOG_DI_PROVA----------------------------------------------
+        console.log('xxxxxxxxxx');
+        console.log('<<<<<<<');
+        console.log(img);
+        console.log('>>>>>>>');
+        console.log('size -> ' + length);
+        console.log('/////////////');
+        //-----------------------------------------------------------------------------------------------------------------
+        if (num === -1) {
+            console.log('SONO ENTRATO NELLA FUNZIONE PREVIOUS');
+            let pos = img.indexOf(state.view.selectedImages);
+            console.log('pos -> ' + pos);
+            if (pos != -1) {
+                console.log('SONO ENTRATO NELL IF PREV');
+                let index = pos - 1;
+                console.log('index -> ' + index);
+                dispatch(imageSelect(img[index]));
+                if (img[index] === img[0]) {
+                    dispatch(imageSelect(img[length]));
+                    console.log('RICOMINCIO DA IMG.LENGTH');
+                    console.log(img[0]);
                 }
-            };
-        };
-
-        next = function (nextButt, img) {
-            return (dispatch) => {
-
-                console.log('SONO ENTRATO NELLA FUNZIONE NEXT');
-
-                let j = 0;
-                if (nextButt <= img[0].length) {
-                    ++j;
-                    dispatch(imageSelect(img[0][j]));
-
-                    console.log('++++img[0][next]+++++');
-                    console.log(img[0][j]);
-                    console.log('+++++++++++');
+                console.log('---img[prev]---');
+                console.log(img[index]);
+                console.log('---------------');
+            }
+        }
+        if (num === 1) {
+            console.log('SONO ENTRATO NELLA FUNZIONE NEXT');
+            let pos = img.indexOf(state.view.selectedImages);
+            console.log('pos -> ' + pos);
+            if (pos != -1) {
+                console.log('SONO ENTRATO NELL IF NEXT');
+                let index = pos + 1;
+                console.log('index -> ' + index);
+                dispatch(imageSelect(img[index]));
+                if (img[index] === undefined) {
+                    dispatch(imageSelect(img[0]));
+                    console.log('RICOMINCIO DA 0');
+                    console.log(img[0]);
                 }
-            };
-        };
-
+                console.log('+++img[next]+++');
+                console.log(img[index]);
+                console.log('++++++++++++++');
+            }
+        }
     };
 };

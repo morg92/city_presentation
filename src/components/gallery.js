@@ -7,19 +7,19 @@ export default class Gallery extends Component {
             img: ''
         };
 
-        this.handleClickToIcon = this.handleClickToIcon.bind(this);
+        //this.handleClickToIcon = this.handleClickToIcon.bind(this);
     }
-
+/*
     handleClickToIcon(event) { () =>
         event.preventDefault();
         this.props.dispatchToIcon(event);
     }
-
+*/
     render() {
         let immagini;
         if (this.props.immagini) {
             immagini = (this.props.immagini.map((allImg, k) =>
-                <div className="insideGallery" key={'divGallery' + k} onClick={() => this.handleClickToIcon(allImg)}>
+                <div className="insideGallery" key={'divGallery' + k} /*onClick={() => this.handleClickToIcon(allImg)}*/>
                     <img src={allImg} />
                 </div>
             ));
