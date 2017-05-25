@@ -130,7 +130,7 @@ export const goEvent = () => {
         }, 1000);//5000
         dispatch(enableButton(true));
     };
-};//--(CONTROLLARE 'ELSE' -> ERROR)!!
+};
 
 
 export const listToGallery = (value) => {
@@ -147,9 +147,6 @@ export const listToGallery = (value) => {
             if (kImg[i].key === value) {
                 dispatch(imgArray(kImg[i].img));
                 dispatch(imageSelect(kImg[i].img[0]));
-                console.log('selectedImages');
-                console.log(kImg[i].img[0]);
-                console.log('/*--*/');
                 dispatch(addArrImg(kImg[i].img));
             }
         }
@@ -171,51 +168,27 @@ export const toIcon = (num) => {
 
         img = state.view.images;
         let length = img.length - 1;
-
-        //-------------------------------------------------------LOG_DI_PROVA----------------------------------------------
-        console.log('xxxxxxxxxx');
-        console.log('<<<<<<<');
-        console.log(img);
-        console.log('>>>>>>>');
-        console.log('size -> ' + length);
-        console.log('/////////////');
-        //-----------------------------------------------------------------------------------------------------------------
         if (num === -1) {
-            console.log('SONO ENTRATO NELLA FUNZIONE PREVIOUS');
             let pos = img.indexOf(state.view.selectedImages);
-            console.log('pos -> ' + pos);
             if (pos != -1) {
-                console.log('SONO ENTRATO NELL IF PREV');
                 let index = pos - 1;
-                console.log('index -> ' + index);
                 dispatch(imageSelect(img[index]));
                 if (img[index] === img[0]) {
                     dispatch(imageSelect(img[length]));
-                    console.log('RICOMINCIO DA IMG.LENGTH');
-                    console.log(img[0]);
                 }
-                console.log('---img[prev]---');
-                console.log(img[index]);
-                console.log('---------------');
+            }
+            else {
+                alert('ciao!');
             }
         }
         if (num === 1) {
-            console.log('SONO ENTRATO NELLA FUNZIONE NEXT');
             let pos = img.indexOf(state.view.selectedImages);
-            console.log('pos -> ' + pos);
             if (pos != -1) {
-                console.log('SONO ENTRATO NELL IF NEXT');
                 let index = pos + 1;
-                console.log('index -> ' + index);
                 dispatch(imageSelect(img[index]));
                 if (img[index] === undefined) {
                     dispatch(imageSelect(img[0]));
-                    console.log('RICOMINCIO DA 0');
-                    console.log(img[0]);
                 }
-                console.log('+++img[next]+++');
-                console.log(img[index]);
-                console.log('++++++++++++++');
             }
         }
     };

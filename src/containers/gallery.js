@@ -7,17 +7,8 @@ let mapStateToProps = (state) => {
         immagini: state.images.img
     });
 };
-/*
-let mapDispatchToProps = (dispatch) => {
-    return ({
-        dispatchToIcon: (url) => {
-            dispatch(toIcon(url));
-        }
-    });
-};
-*/
+
 export default connect(
     mapStateToProps,
-    //mapDispatchToProps
     null
 )(Gallery);

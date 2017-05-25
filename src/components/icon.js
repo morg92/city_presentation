@@ -16,14 +16,8 @@ export default class Icon extends Component {
     render() {
         let selectedImages;
         let i = 0;
-        /*if (this.props.selectedImages) {
-            selectedImages = (this.props.selectedImages.map((viewImages, k) =>
-                <img src={viewImages} key={'icon' + k} />
-            ));
-        }*/
         if (this.props.selectedImages) {
-            selectedImages = <img src={selectedImages} key={'icon' + i}/>;
-            {/*console.log(selectedImages);*/}
+            selectedImages = <img src={this.props.selectedImages} key={'icon' + i}/>;
             ++i;
         }
 
