@@ -127,7 +127,7 @@ export const goEvent = () => {
                 dispatch(isError(true));
                 alert('Loading fail!');
             }*/
-        }, 1000);//5000
+        }, 5000);
         dispatch(enableButton(true));
     };
 };
@@ -173,12 +173,9 @@ export const toIcon = (num) => {
             if (pos != -1) {
                 let index = pos - 1;
                 dispatch(imageSelect(img[index]));
-                if (img[index] === img[0]) {
+                if (img[index] === undefined) {
                     dispatch(imageSelect(img[length]));
                 }
-            }
-            else {
-                alert('ciao!');
             }
         }
         if (num === 1) {
