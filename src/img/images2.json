@@ -1,0 +1,67 @@
+{
+    "city": [
+        {
+            "id": 1,
+            "name": "Amsterdam"
+        },
+        {
+            "id": 2,
+            "name": "Berlin"
+        },
+        {
+            "id": 3,
+            "name": "Vilnius"
+        },
+        {
+            "id": 4,
+            "name": "London"
+        }
+    ],
+    "info": [
+        {
+            "cityId": 1,
+            "name": "Amsterdam",
+            "anno_fondazione": "1275",
+            "descrizione": "https://it.wikipedia.org/wiki/Amsterdam",
+            "img": [
+                "http://www.amsterdam.net/it/wp-content/uploads/sites/20/Prinsengracht.jpg",
+                "http://www.iostudionews.it/wp-content/uploads/2016/08/AMSTERDAM-Netherlands-1_01.jpg",
+                "https://o.aolcdn.com/images/dims3/GLOB/crop/4320x2273+0+303/resize/1200x630!/format/jpg/quality/85/http%3A%2F%2Fo.aolcdn.com%2Fhss%2Fstorage%2Fmidas%2F600318eae7ff92e9a019ddac9ef567d%2F205142277%2Ftulips-with-canal-houses-of-amsterdam-picture-id467232890",
+                "https://media-cdn.tripadvisor.com/media/photo-s/07/23/f2/68/jordaan-amsterdam.jpg",
+                "https://s-media-cache-ak0.pinimg.com/originals/a3/f9/a5/a3f9a58ee1e908efb35db592b5ece9f8.jpg"
+            ]
+        },
+        {
+            "cityId": 2,
+            "name": "Berlin",
+            "anno_fondazione": "1237",
+            "descrizione": "https://it.wikipedia.org/wiki/Berlino",
+            "img": [
+                "https://cdn.getyourguide.com/niwziy2l9cvz/3Nl5nGC5fq2CQ0O42awIwq/0cff0ba6cc53c2e0f9c153e820fcc8d0/berlin-Brandenburg-Gate-1112x630.jpg",
+                "http://www.10cose.it/wp-content/uploads/2016/01/reichstag-berlino.jpg",
+                "https://upload.wikimedia.org/wikipedia/commons/1/1f/Schloss_Charlottenburg_in_Berlin_as_seen_from_park.jpg"
+            ]
+        },
+        {
+            "cityId": 3,
+            "name": "Vilnius",
+            "anno_fondazione": "1323",
+            "descrizione": "https://it.wikipedia.org/wiki/Vilnius",
+            "img": [
+                "https://cdn.balticlivecam.com/images/Vilnius-Panorama.jpg",
+                "http://www.nightlife-cityguide.com/wp-content/uploads/2014/12/vilnius-cosa-vedere-town-hall-municipio.jpg",
+                "http://www.nationsonline.org/gallery/Lithuania/St-Annes-church-Vilnius.jpg"
+            ]
+        },
+        {
+            "cityId": 4,
+            "name": "London",
+            "anno_fondazione": "43 d.c.",
+            "descrizione": "https://it.wikipedia.org/wiki/Londra",
+            "img": [
+                "https://media.timeout.com/images/103042848/image.jpg",
+                "https://www.marks-clerk.com/MarksClerk/media/MCMediaLib/Images,%20Logos,%20Icons/Office%20Page%20Images/London3.jpg?width=974&height=406&ext=.jpg"
+            ]
+        }
+    ]
+}

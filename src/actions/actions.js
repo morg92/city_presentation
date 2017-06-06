@@ -123,11 +123,11 @@ export const goEvent = () => {
             if (state.choose.info != null) {
                 dispatch(isLoading(true));
             }
-            /*else {
+            else {
                 dispatch(isError(true));
-                alert('Loading fail!');
-            }*/
-        }, 5000);
+                //alert('Loading fail!');
+            }
+        }, 1000);//5000
         dispatch(enableButton(true));
     };
 };
@@ -160,12 +160,11 @@ export const listToGallery = (value) => {
 export const toIcon = (num) => {
     return (dispatch, getState) => {
         let state = getState();
-        let img = [];
-
         if (state.view.emptyIcon === true) {
             dispatch(addIcon(false));
         }
 
+        let img = [];
         img = state.view.images;
         let length = img.length - 1;
         if (num === -1) {

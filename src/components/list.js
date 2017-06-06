@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 export default class List extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            buttonEnable: true
+        };
 
         this.handleGallery = this.handleGallery.bind(this);
     }
@@ -20,7 +23,7 @@ export default class List extends Component {
                     <td>{infoSingle.name}</td>
                     <td><a href={infoSingle.descrizione}>Wika</a></td>
                     <td>{infoSingle.anno_fondazione}</td>
-                    <td><input type="button" className="ButtonList" value="Show" onClick={() => this.handleGallery(infoSingle.key)}/></td>
+                    <td><input type="button" className="ButtonList" value="Show" onClick={() => this.handleGallery(infoSingle.key)} /*disabled={this.state.buttonEnable}*//></td>
                 </tr>
             ));
         }
