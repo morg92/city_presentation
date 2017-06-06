@@ -18,19 +18,3 @@ app.get('/src/img/images2.json', function (req, res) {
 app.listen(4000, () => {
     console.log('App listening on port 4000');
 });
-
-//-------------------------------------------------------------------------------------------------------------------------------
-/*
-const data = require('/src/img/images.json');
-function(req, res) {
-    let city = [];
-    for (let key in data) {
-         city.push({
-                key: key,
-                name: data[key].name,
-                descrizione: data[key].descrizione,
-                anno_fondazione: data[key].anno_fondazione
-            });
-    }
-}
-*/

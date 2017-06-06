@@ -1,3 +1,5 @@
+import axios from 'axios';
+import { data } from '../costants/costants.js';
 import { LOAD } from '../costants/costants.js';
 import { ERROR } from '../costants/costants.js';
 import { ADD_ICON } from '../costants/costants.js';
@@ -6,9 +8,9 @@ import { ADD_GALLERY } from '../costants/costants.js';
 import { BUTT_ENABLE } from '../costants/costants.js';
 import { ADD_LIST } from '../costants/costants.js';
 import { INFO } from '../costants/costants.js';
-import { data } from '../costants/costants.js';
 import { SEL_IMG } from '../costants/costants.js';
 import { ADD_ARR_IMG } from '../costants/costants.js';
+const API_URL = 'http://localhost:4000/src/img/images2.json';
 
 
 function isLoading(isLoaded) {
@@ -104,29 +106,19 @@ function addArrImg(images) {
 
 
 export const goEvent = () => {
-    return (dispatch, getState) => {
-        let state = getState();
-        let city = [];
-        for (let key in data) {
-            city.push({
-                key: key,
-                name: data[key].name,
-                descrizione: data[key].descrizione,
-                anno_fondazione: data[key].anno_fondazione
-            });
-        }
+    return (dispatch) => {
         setTimeout(() => {
-            if (state.choose.emptyList === true) {
-                dispatch(sendCityToList(city));
-                dispatch(addList(false));
-            }
-            if (state.choose.info != null) {
-                dispatch(isLoading(true));
-            }
-            else {
-                dispatch(isError(true));
-                //alert('Loading fail!');
-            }
+            axios.get(API_URL)
+                .then((result) => {
+                    if (result.status === 200) {
+                        dispatch(isLoading(true));
+                        dispatch(sendCityToList(data.info));
+                        dispatch(addList(false));
+                    }
+                }).catch(() => {
+                    dispatch(isError(true));
+                    alert('Loading fail!');
+                });
         }, 1000);//5000
         dispatch(enableButton(true));
     };
@@ -134,25 +126,35 @@ export const goEvent = () => {
 
 
 export const listToGallery = (value) => {
-    return (dispatch, getState) => {
-        let state = getState();
-        const kImg = [];
-        for (let i in data) {
-            kImg.push({
-                key: i,
-                img: data[i].img
-            });
-        }
-        for (let i in kImg) {
-            if (kImg[i].key === value) {
-                dispatch(imgArray(kImg[i].img));
-                dispatch(imageSelect(kImg[i].img[0]));
-                dispatch(addArrImg(kImg[i].img));
+    return (dispatch) => {
+        for (let i in data.info) {
+            if (data.info[i].cityId === value) {
+                dispatch(addGallery(false));
+                dispatch(imgArray(data.info[i].img));
+                dispatch(imageSelect(data.info[i].img[0]));
+                dispatch(addArrImg(data.info[i].img));
             }
         }
-        if (state.images.emptyGallery === true) {
-            dispatch(addGallery(false));
-        }
+        //seconda chiamata API
+       /* let url = 'http://localhost:4000/city/' + value + '/img';
+        console.log('sono fuori call');
+        axios.get(url)
+            .then((result) => {
+                console.log('sono entrato nel then');
+                for (let i in data.info) {
+                    if (result.status === 200) {
+                        console.log('--result--');
+                        console.log(result);
+                        console.log('-----');
+                        dispatch(addGallery(false));
+                        dispatch(imgArray(data.info[i].img));
+                        dispatch(imageSelect(data.info[i].img[0]));
+                        dispatch(addArrImg(data.info[i].img));
+                    }
+                }
+            }).catch((error) => {
+                alert(error.stack);
+            });*/
     };
 };
 
@@ -160,9 +162,8 @@ export const listToGallery = (value) => {
 export const toIcon = (num) => {
     return (dispatch, getState) => {
         let state = getState();
-        if (state.view.emptyIcon === true) {
-            dispatch(addIcon(false));
-        }
+
+        dispatch(addIcon(false));
 
         let img = [];
         img = state.view.images;

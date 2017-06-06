@@ -9,5 +9,5 @@ export const INFO = 'SEND_INFO_TO_LIST';
 export const SEL_IMG = 'SELECTED_IMG_TO_VIEW';
 export const ADD_ARR_IMG = 'ADD_ARRAY_IMAGES';
 
-import json from '../img/images.json';
+import json from '../img/images2.json';
 export const data = json;
