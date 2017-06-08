@@ -9,7 +9,9 @@ import { BUTT_ENABLE } from '../costants/costants.js';
 import { ADD_LIST } from '../costants/costants.js';
 import { INFO } from '../costants/costants.js';
 import { SEL_IMG } from '../costants/costants.js';
+import { SEL_INFO } from '../costants/costants.js';
 import { ADD_ARR_IMG } from '../costants/costants.js';
+import { ADD_INF_IMG } from '../costants/costants.js';
 
 
 function isLoading(isLoaded) {
@@ -44,6 +46,15 @@ function imageSelect(selectedImages) {
         type: SEL_IMG,
         payload: {
             selectedImages: selectedImages
+        }
+    };
+}
+
+function infoSelect(selectedInfo) {
+    return {
+        type: SEL_INFO,
+        payload: {
+            selectedInfo: selectedInfo
         }
     };
 }
@@ -102,24 +113,34 @@ function addArrImg(images) {
     };
 }
 
+function addInfoImg(info) {
+    return {
+        type: ADD_INF_IMG,
+        payload: {
+            infoImg: info
+        }
+    };
+}
+
+
 
 var instance = axios.create({
-  baseURL: 'http://localhost:4001'
+    baseURL: 'http://localhost:4001'
 });
 
 export const goEvent = () => {
     return (dispatch) => {
-            instance.get('/src/img/images2.json')
-                .then((result) => {
-                    if (result.status === 200) {
-                        dispatch(isLoading(true));
-                        dispatch(sendCityToList(data.info));
-                        dispatch(addList(false));
-                    }
-                }).catch((error) => {
-                    dispatch(isError(true));
-                    alert('Loading fail!',error);
-                });
+        instance.get('/src/img/images2.json')
+            .then((result) => {
+                if (result.status === 200) {
+                    dispatch(isLoading(true));
+                    dispatch(sendCityToList(data.info));
+                    dispatch(addList(false));
+                }
+            }).catch((error) => {
+                dispatch(isError(true));
+                alert('Loading fail!', error);
+            });
         dispatch(enableButton(true));
     };
 };
@@ -139,6 +160,14 @@ export const listToGallery = (value) => {
             }).catch((error) => {
                 alert(error.stack);
             });
+
+        let urlInfo = '/city/' + value + '/infoImg';
+        instance.get(urlInfo)
+            .then((result) => {
+                if (result.status === 200) {
+                    dispatch(addInfoImg(result.data));
+                }
+            });
     };
 };
 
@@ -149,11 +178,14 @@ export const toIcon = (value) => {
         let img = [];
         img = state.view.images;
         let length = img.length - 1;
+        let infoImg = [];
+        infoImg = state.view.infoImg;
 
         dispatch(addIcon(false));
 
-        if (typeof(value) === 'number') {
+        if (typeof (value) === 'number') {
             dispatch(imageSelect(img[value]));
+            dispatch(infoSelect(infoImg[value]));
         }
 
         if (value === '-') {
@@ -161,8 +193,10 @@ export const toIcon = (value) => {
             if (pos != -1) {
                 let index = pos - 1;
                 dispatch(imageSelect(img[index]));
+                dispatch(infoSelect(infoImg[index]));
                 if (img[index] === undefined) {
                     dispatch(imageSelect(img[length]));
+                    dispatch(infoSelect(infoImg[length]));
                 }
             }
         }
@@ -171,8 +205,10 @@ export const toIcon = (value) => {
             if (pos != -1) {
                 let index = pos + 1;
                 dispatch(imageSelect(img[index]));
+                dispatch(infoSelect(infoImg[index]));
                 if (img[index] === undefined) {
                     dispatch(imageSelect(img[0]));
+                    dispatch(infoSelect(infoImg[0]));
                 }
             }
         }

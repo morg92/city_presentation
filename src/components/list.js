@@ -32,7 +32,7 @@ export default class List extends Component {
         return (
             <div className="list">
                 <table>
-                    <thead>
+                    <thead className="tHead">
                         <tr key="tu">
                             <th>Nome</th>
                             <th>Discover</th>
@@ -40,7 +40,7 @@ export default class List extends Component {
                             <th></th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="tab">
                         {infoCity}
                     </tbody>
                 </table>

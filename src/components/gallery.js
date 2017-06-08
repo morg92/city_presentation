@@ -24,12 +24,11 @@ export default class Gallery extends Component {
             immagini = (this.props.immagini.map((allImg, k) =>
                 <div className="insideGallery" key={'divGallery' + k} onClick={() => this.handleIcon(k)}>
                     <img src={allImg} />
-                    {/*<p>{k}</p>*/}
                 </div>
             ));
         }
         return (
-            <div className="gallery">
+            <div className="galleryView">
                 <CSSTransitionGroup
                     transitionName="gallery"
                     transitionEnterTimeout={600}

@@ -15,6 +15,10 @@
         {
             "id": 4,
             "name": "London"
+        },
+        {
+            "id": 5,
+            "name": "Paris"
         }
     ],
     "info": [
@@ -29,6 +33,13 @@
                 "https://o.aolcdn.com/images/dims3/GLOB/crop/4320x2273+0+303/resize/1200x630!/format/jpg/quality/85/http%3A%2F%2Fo.aolcdn.com%2Fhss%2Fstorage%2Fmidas%2F600318eae7ff92e9a019ddac9ef567d%2F205142277%2Ftulips-with-canal-houses-of-amsterdam-picture-id467232890",
                 "https://media-cdn.tripadvisor.com/media/photo-s/07/23/f2/68/jordaan-amsterdam.jpg",
                 "https://s-media-cache-ak0.pinimg.com/originals/a3/f9/a5/a3f9a58ee1e908efb35db592b5ece9f8.jpg"
+            ],
+            "infoImg": [
+                "Prinsengracht (Canale del Principe)",
+                "Amsterdam Centraal",
+                "Tulpen",
+                "Leidsegracht (Canale di Leida)",
+                "Windmolen"
             ]
         },
         {
@@ -42,6 +53,13 @@
                 "https://upload.wikimedia.org/wikipedia/commons/1/1f/Schloss_Charlottenburg_in_Berlin_as_seen_from_park.jpg",
                 "https://media-cdn.tripadvisor.com/media/photo-s/03/9b/2d/b5/berlin.jpg",
                 "https://2.bp.blogspot.com/-gTWqNdmtqHQ/V3RDdKkPyKI/AAAAAAAAKxk/_Wz5bfpq5OwjsTJ_m23H6RZgzItNHo1IACLcB/s1600/berlin.jpg"
+            ],
+            "infoImg":[
+                "Brandenburger Tor",
+                "Bundestag",
+                "School Charlottenburg",
+                "Statue von Apollo",
+                "Oberbaumbrucke"
             ]
         },
         {
@@ -55,12 +73,19 @@
                 "http://www.nationsonline.org/gallery/Lithuania/St-Annes-church-Vilnius.jpg",
                 "http://travelblog.viator.com/wp-content/uploads/2015/07/hill-of-crosses.jpg",
                 "https://pribalt.info/novosti/images/panorama-riga-zima.jpg"
+            ],
+            "infoImg":[
+                "Moderni grattacieli delle città",
+                "Vista aerea",
+                "St.Annes church",
+                "Hill of crosses",
+                "Panorama"
             ]
         },
         {
             "cityId": 4,
             "name": "London",
-            "anno_fondazione": "43 d.c.",
+            "anno_fondazione": "43 d.C.",
             "descrizione": "https://it.wikipedia.org/wiki/Londra",
             "img": [
                 "https://media.timeout.com/images/103042848/image.jpg",
@@ -68,6 +93,33 @@
                 "http://www.guiadeviaje.net/reinounido/imagenes/londres-trafalgarsquare-top.jpg",
                 "http://www.guide-evasion.fr/wp-content/uploads/2015/07/shutterstock_194751956_opt.jpg",
                 "http://st.ilfattoquotidiano.it/wp-content/uploads/2013/08/buckingham-palace-interna-nuova.jpg"
+            ],
+            "infoImg":[
+                "London by night",
+                "London Bridge",
+                "Trafalgar Square",
+                "Shutterstock",
+                "Buckingham Palace"
+            ]
+        },
+        {
+            "cityId": 5,
+            "name": "Paris",
+            "anno_fondazione":"17 d.C.",
+            "descrizione": "https://it.wikipedia.org/wiki/Parigi",
+            "img": [
+                "http://www.telegraph.co.uk/content/dam/Travel/Destinations/Europe/France/Paris/paris-attractions-xlarge.jpg",
+                "http://parisdesignagenda.com/wp-content/uploads/2016/05/Paris-Events-This-May-2016-3.jpg",
+                "https://www.castille.com/assets/components/phpthumbof/cache/castille-louvre-2560x1200.09bf546d5cbc17c083466291b839ac29.jpg",
+                "http://s2.postimg.org/scv4v05bd/notre_dame_cathedral_1024x576.jpg",
+                "http://4.bp.blogspot.com/-G4bW1MfvBdQ/UtrWUcdXWTI/AAAAAAAAZis/hYJj4OfSj-E/s1600/Paris_July_2011-30.jpg"
+            ],
+            "infoImg":[
+                "Tourre Eiffel",
+                "Seine",
+                "Louvre",
+                "Notre Dame",
+                "Arc du Triomphe"
             ]
         }
     ]

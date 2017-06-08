@@ -12,7 +12,7 @@ body {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    background: rgb(242, 242, 242);
+    background: rgba(0, 0, 255, 0.3);
     overflow: scroll;
 }
 
@@ -20,12 +20,17 @@ body {
 
 .click {
     text-align: center;
+    font-size: bold;
+    color: yellow;
     background-position-x: 45%;
     background-position-y: 20%;
-    width: 70px;
-    height: 70px;
+    width: 80px;
+    height: 80px;
     margin-top: 10px;
     margin-left: 100px;
+    background-color: red;
+    border: 3px dashed yellow;
+    border-radius: 35% 35% 35% 35%;
 }
 
 
@@ -34,12 +39,22 @@ table {
     display: table;
     border-collapse: collapse;
     border-spacing: 2px;
-    border: 1px solid darkgray;
+    border: 3px solid white;
     margin: 0 auto;
     padding: 8px;
     border-radius: 4px;
     position: relative;
     top: 40px;
+}
+
+.tHead {
+    background-color: darkblue;
+    color: red;
+    font-size: bold;
+}
+
+.tab {
+    background-color: white;
 }
 
 tr, th {
@@ -53,8 +68,7 @@ tr, th {
 
 
 
-.gallery {
-    border: 2px solid darkcyan;
+.galleryView {
     width: 1800px;
     height: 130px;
     margin:  0 auto;
@@ -63,12 +77,15 @@ tr, th {
 
 .insideGallery {
     display: inline;
-    border: 3px dashed darkcyan;
+}
+
+.insideGallery:hover {
+    opacity: 0.5;
 }
 
 img {
     background-repeat: no-repeat;
-    max-width: 90%;
+    max-width: 100%;
     max-height: 100%;
 }
 
@@ -77,12 +94,12 @@ img {
 }
 
 .gallery-enter.gallery-enter-active {
-  opacity: 0.5;
+  opacity: 1;
   transition: opacity 500ms ease-in;
 }
 
 .gallery-leave {
-  opacity: 0.5;
+  opacity: 1;
 }
 
 .gallery-leave.gallery-leave-active {
@@ -91,38 +108,72 @@ img {
 }
 
 
-
 .icon {
-    border: 2px solid darkcyan;
-    width: 900px;
-    height: 500px;
+    position: relative;
+    width: 1000px;
+    height: 600px;
     margin: 0 auto;
+    bottom: 0;
+}
+
+.icon img {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
 }
 
 .insideIcon {
-    width: 900px;
-    height: 405px;
+    position: absolute;
+    width: 100%;
+    bottom: 1px;
+}
+
+.descr {
+    display: inline;
+    text-align: center;
+}
+
+.traslate-enter {
+    transform: translateX(100vw);
+}
+
+.traslate-enter.traslate-enter-active {
+    transform: translateX(0);
+    transition: all 500ms ease-in-out;
+}
+
+.traslate-leave {
+    transform: translateX(0);
+}
+
+.traslate-leave.traslate-leave-active {
+    transform: translateX(-100vw);
+    transition: all 500ms ease-in-out;
+}
+
+.previous {
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    background-color: darkblue;
+    border-radius: 55% 55% 55% 55%;
+    opacity: 0.5;
+    width: 85px;
+    height: 55px;
+    position: relative;
+    cursor: pointer;
 }
 
 .next {
     float: right;
-    overflow: auto;
-    clear: both;
     text-align: center;
+    font-size: bold;
+    color: white;
     background-color: darkblue;
+    border-radius: 55% 55% 55% 55%;
     opacity: 0.5;
-    margin-left: 93%;
-    width: 75px;
-    height: 45px; 
-}
-
-.previous {
-    overflow: auto;
-    clear: both;
-    text-align: center;
-    background-color: darkblue;
-    opacity: 0.5;
-    width: 75px;
-    height: 45px;
-    display: inline-block;
+    width: 85px;
+    height: 55px;
+    position: relative;
+    cursor: pointer;
 }
