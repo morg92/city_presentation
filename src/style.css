@@ -16,6 +16,20 @@ body {
     overflow: scroll;
 }
 
+
+
+.click {
+    text-align: center;
+    background-position-x: 45%;
+    background-position-y: 20%;
+    width: 70px;
+    height: 70px;
+    margin-top: 10px;
+    margin-left: 100px;
+}
+
+
+
 table {
     display: table;
     border-collapse: collapse;
@@ -37,54 +51,78 @@ tr, th {
     text-align: center;
 }
 
-img {
-    background-repeat: no-repeat;
-    max-width: 90%;
-    max-height: 100%;
-}
 
-.icon {
-    border: 2px solid darkcyan;
-    width: 600px;
-    height: 500px;
-    margin: 0 auto;
-}
-
-.next {
-    text-align: right;
-    margin-left: 93%; 
-}
-
-.previous {
-    text-align: left;
-    display: inline-block;
-}
-
-.click {
-    text-align: center;
-    background-position-x: 45%;
-    background-position-y: 20%;
-    width: 70px;
-    height: 70px;
-    margin-top: 10px;
-    margin-left: 250px;
-}
 
 .gallery {
     border: 2px solid darkcyan;
-    width: 900px;
-    height: 100px;
+    width: 1800px;
+    height: 130px;
     margin:  0 auto;
     padding: 8px;
 }
 
 .insideGallery {
     display: inline;
+    border: 3px dashed darkcyan;
+}
+
+img {
+    background-repeat: no-repeat;
+    max-width: 90%;
+    max-height: 100%;
+}
+
+.gallery-enter {
+  opacity: 0.01;
+}
+
+.gallery-enter.gallery-enter-active {
+  opacity: 0.5;
+  transition: opacity 500ms ease-in;
+}
+
+.gallery-leave {
+  opacity: 0.5;
+}
+
+.gallery-leave.gallery-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
+
+
+
+.icon {
+    border: 2px solid darkcyan;
+    width: 900px;
+    height: 500px;
+    margin: 0 auto;
 }
 
 .insideIcon {
-    border: 1px solid darkcyan;
-    width: 530px;
-    height: 380px;
-    margin: 35px;
+    width: 900px;
+    height: 405px;
+}
+
+.next {
+    float: right;
+    overflow: auto;
+    clear: both;
+    text-align: center;
+    background-color: darkblue;
+    opacity: 0.5;
+    margin-left: 93%;
+    width: 75px;
+    height: 45px; 
+}
+
+.previous {
+    overflow: auto;
+    clear: both;
+    text-align: center;
+    background-color: darkblue;
+    opacity: 0.5;
+    width: 75px;
+    height: 45px;
+    display: inline-block;
 }

@@ -15,6 +15,6 @@ app.get('/src/img/images2.json', function (req, res) {
     });
 });
 
-app.listen(4000, () => {
-    console.log('App listening on port 4000');
+app.listen(4001, () => {
+    console.log('App listening on port 4001');
 });

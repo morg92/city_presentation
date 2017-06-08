@@ -10,7 +10,6 @@ import { ADD_LIST } from '../costants/costants.js';
 import { INFO } from '../costants/costants.js';
 import { SEL_IMG } from '../costants/costants.js';
 import { ADD_ARR_IMG } from '../costants/costants.js';
-const API_URL = 'http://localhost:4000/src/img/images2.json';
 
 
 function isLoading(isLoaded) {
@@ -104,22 +103,23 @@ function addArrImg(images) {
 }
 
 
+var instance = axios.create({
+  baseURL: 'http://localhost:4001'
+});
 
 export const goEvent = () => {
     return (dispatch) => {
-        setTimeout(() => {
-            axios.get(API_URL)
+            instance.get('/src/img/images2.json')
                 .then((result) => {
                     if (result.status === 200) {
                         dispatch(isLoading(true));
                         dispatch(sendCityToList(data.info));
                         dispatch(addList(false));
                     }
-                }).catch(() => {
+                }).catch((error) => {
                     dispatch(isError(true));
-                    alert('Loading fail!');
+                    alert('Loading fail!',error);
                 });
-        }, 1000);//5000
         dispatch(enableButton(true));
     };
 };
@@ -127,48 +127,36 @@ export const goEvent = () => {
 
 export const listToGallery = (value) => {
     return (dispatch) => {
-        for (let i in data.info) {
-            if (data.info[i].cityId === value) {
-                dispatch(addGallery(false));
-                dispatch(imgArray(data.info[i].img));
-                dispatch(imageSelect(data.info[i].img[0]));
-                dispatch(addArrImg(data.info[i].img));
-            }
-        }
-        //seconda chiamata API
-       /* let url = 'http://localhost:4000/city/' + value + '/img';
-        console.log('sono fuori call');
-        axios.get(url)
+        let url = '/city/' + value + '/img';
+        instance.get(url)
             .then((result) => {
-                console.log('sono entrato nel then');
-                for (let i in data.info) {
-                    if (result.status === 200) {
-                        console.log('--result--');
-                        console.log(result);
-                        console.log('-----');
-                        dispatch(addGallery(false));
-                        dispatch(imgArray(data.info[i].img));
-                        dispatch(imageSelect(data.info[i].img[0]));
-                        dispatch(addArrImg(data.info[i].img));
-                    }
+                if (result.status === 200) {
+                    dispatch(addGallery(false));
+                    dispatch(imgArray(result.data));
+                    dispatch(imageSelect(result.data[0]));
+                    dispatch(addArrImg(result.data));
                 }
             }).catch((error) => {
                 alert(error.stack);
-            });*/
+            });
     };
 };
 
 
-export const toIcon = (num) => {
+export const toIcon = (value) => {
     return (dispatch, getState) => {
         let state = getState();
-
-        dispatch(addIcon(false));
-
         let img = [];
         img = state.view.images;
         let length = img.length - 1;
-        if (num === -1) {
+
+        dispatch(addIcon(false));
+
+        if (typeof(value) === 'number') {
+            dispatch(imageSelect(img[value]));
+        }
+
+        if (value === '-') {
             let pos = img.indexOf(state.view.selectedImages);
             if (pos != -1) {
                 let index = pos - 1;
@@ -178,7 +166,7 @@ export const toIcon = (num) => {
                 }
             }
         }
-        if (num === 1) {
+        if (value === '+') {
             let pos = img.indexOf(state.view.selectedImages);
             if (pos != -1) {
                 let index = pos + 1;
