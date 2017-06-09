@@ -3,6 +3,7 @@ import { data } from '../costants/costants.js';
 import { LOAD } from '../costants/costants.js';
 import { ERROR } from '../costants/costants.js';
 import { ADD_ICON } from '../costants/costants.js';
+import { ADD_NAME } from '../costants/costants.js';
 import { IMG } from '../costants/costants.js';
 import { ADD_GALLERY } from '../costants/costants.js';
 import { BUTT_ENABLE } from '../costants/costants.js';
@@ -55,6 +56,15 @@ function infoSelect(selectedInfo) {
         type: SEL_INFO,
         payload: {
             selectedInfo: selectedInfo
+        }
+    };
+}
+
+function addCityName(cityName) {
+    return {
+        type: ADD_NAME,
+        payload: {
+            cityName: cityName
         }
     };
 }
@@ -166,6 +176,15 @@ export const listToGallery = (value) => {
             .then((result) => {
                 if (result.status === 200) {
                     dispatch(addInfoImg(result.data));
+                    dispatch(infoSelect(result.data[0]));
+                }
+            });
+
+        let urlName = '/city/' + value + '/name';
+        instance.get(urlName)
+            .then((result) => {
+                if (result.status === 200) {
+                    dispatch(addCityName(result.data));
                 }
             });
     };

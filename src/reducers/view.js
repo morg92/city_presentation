@@ -1,4 +1,5 @@
 import { ADD_ICON } from '../costants/costants.js';
+import { ADD_NAME } from '../costants/costants.js';
 import { SEL_IMG } from '../costants/costants.js';
 import { SEL_INFO } from '../costants/costants.js';
 import { ADD_ARR_IMG } from '../costants/costants.js';
@@ -8,6 +9,7 @@ function initialState() {
     return {
         selectedImages: null,
         selectedInfo: null,
+        cityName: null,
         emptyIcon: true,
         images: null,
         infoImg: null
@@ -20,6 +22,12 @@ export default function view(state = initialState(), action) {
             return {
                 ...state,
                 emptyIcon: action.payload.emptyIcon
+            };
+
+        case ADD_NAME:
+            return {
+                ...state,
+                cityName: action.payload.cityName
             };
 
         case SEL_IMG:

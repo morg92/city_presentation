@@ -24,7 +24,7 @@ export default class List extends Component {
                     <td>{infoSingle.name}</td>
                     <td><a href={infoSingle.descrizione}>Wika</a></td>
                     <td>{infoSingle.anno_fondazione}</td>
-                    <td><input type="button" className="ButtonList" value="Show" onClick={() => this.handleGallery(infoSingle.cityId)} /></td>
+                    <td><input type="button" className="buttonList" value="Show" onClick={() => this.handleGallery(infoSingle.cityId)}/></td>
                 </tr>
             ));
         }
@@ -34,10 +34,10 @@ export default class List extends Component {
                 <table>
                     <thead className="tHead">
                         <tr key="tu">
-                            <th>Nome</th>
-                            <th>Discover</th>
-                            <th>Foundation</th>
-                            <th></th>
+                            <th width="15%">Nome</th>
+                            <th width="15%">Discover</th>
+                            <th width="15%">Foundation</th>
+                            <th width="15%"></th>
                         </tr>
                     </thead>
                     <tbody className="tab">

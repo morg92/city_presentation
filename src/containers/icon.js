@@ -4,7 +4,9 @@ import { toIcon } from '../actions/actions.js';
 
 let mapStateToProps = (state) => {
     return {
-        selectedImages: state.view.selectedImages
+        selectedImages: state.view.selectedImages,
+        selectedInfo: state.view.selectedInfo,
+        cityName: state.view.cityName
     };
 };
 

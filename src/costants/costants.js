@@ -1,6 +1,7 @@
 export const LOAD = 'IS_LOADING';
 export const ERROR = 'ERROR';
 export const ADD_ICON = 'ADD_IMG_TO_ICON';
+export const ADD_NAME = 'ADD_CITY_NAME';
 export const IMG = 'TAKE_IMG_JSON';
 export const ADD_GALLERY = 'ADD_IMG_TO_GALLERY';
 export const ADD_LIST = 'ADD_CITY_TO_LIST';
