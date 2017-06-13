@@ -45,7 +45,12 @@ export default class Gallery extends Component {
         return (
             <div>
                 <div className="descr">
-                    {selectedInfo}
+                    <CSSTransitionGroup
+                        transitionName="gallery"
+                        transitionEnterTimeout={600}
+                        transitionLeaveTimeout={200}>
+                        {selectedInfo}
+                    </CSSTransitionGroup>
                 </div>
                 <div className="galleryView">
                     <CSSTransitionGroup

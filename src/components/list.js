@@ -37,7 +37,7 @@ export default class List extends Component {
                             <th width="15%">Nome</th>
                             <th width="15%">Discover</th>
                             <th width="15%">Foundation</th>
-                            <th width="15%"></th>
+                            <th width="9%">Go!</th>
                         </tr>
                     </thead>
                     <tbody className="tab">
