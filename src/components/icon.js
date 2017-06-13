@@ -17,15 +17,11 @@ export default class Icon extends Component {
 
     render() {
         let selectedImages;
-        let selectedInfo;
         let cityName;
         let i;
         if (this.props.selectedImages) {
             selectedImages = <img src={this.props.selectedImages} key={'icon' + i} />;
             ++i;
-        }
-        if (this.props.selectedInfo) {
-            selectedInfo = <p>{this.props.selectedInfo}</p>;
         }
         if (this.props.cityName) {
             cityName = <p>{this.props.cityName}</p>;
@@ -33,7 +29,9 @@ export default class Icon extends Component {
 
         return (
             <div>
-                <div className="cityName">{cityName}</div>
+                <div className="cityName">
+                    {cityName}
+                </div>
                 <div className="icon">
                     <CSSTransitionGroup
                         transitionName="traslate"
@@ -47,9 +45,6 @@ export default class Icon extends Component {
                         <button className="previous" onClick={() => this.handlePreviousNext('-')}>&#8249;</button>
                         <button className="next" onClick={() => this.handlePreviousNext('+')}>&#8250;</button>
                     </div>
-                </div>
-                <div className="descr">
-                    {selectedInfo}
                 </div>
             </div>
         );

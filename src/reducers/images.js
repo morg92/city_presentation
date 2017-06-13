@@ -1,12 +1,18 @@
 import { IMG } from '../costants/costants.js';
 import { ADD_GALLERY } from '../costants/costants.js';
 import { BUTT_ENABLE } from '../costants/costants.js';
+import { ADD_INF_IMG } from '../costants/costants.js';
+import { SEL_INFO } from '../costants/costants.js';
+import { SELECT } from '../costants/costants.js';
 
 function initialState() {
     return {
         buttonEnable: false,
         emptyGallery: true,
-        img: null
+        selected: false,
+        img: null,
+        infoImg: null,
+        selectedInfo: null
     };
 }
 
@@ -28,6 +34,24 @@ export default function images(state = initialState(), action) {
             return {
                 ...state,
                 buttonEnable: action.payload.buttonEnable
+            };
+
+        case SELECT:
+            return {
+                ...state,
+                selected: action.payload.selected
+            };
+
+        case ADD_INF_IMG:
+            return {
+                ...state,
+                infoImg: action.payload.infoImg
+            };
+
+        case SEL_INFO:
+            return {
+                ...state,
+                selectedInfo: action.payload.selectedInfo
             };
 
         default:

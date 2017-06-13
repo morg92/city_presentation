@@ -6,12 +6,12 @@ import { ADD_ICON } from '../costants/costants.js';
 import { ADD_NAME } from '../costants/costants.js';
 import { IMG } from '../costants/costants.js';
 import { ADD_GALLERY } from '../costants/costants.js';
+import { SELECT } from '../costants/costants.js';
 import { BUTT_ENABLE } from '../costants/costants.js';
 import { ADD_LIST } from '../costants/costants.js';
 import { INFO } from '../costants/costants.js';
 import { SEL_IMG } from '../costants/costants.js';
 import { SEL_INFO } from '../costants/costants.js';
-import { ADD_ARR_IMG } from '../costants/costants.js';
 import { ADD_INF_IMG } from '../costants/costants.js';
 
 
@@ -87,6 +87,15 @@ function addGallery(emptyGallery) {
     };
 }
 
+function selected(selected) {
+    return {
+        type: SELECT,
+        payload: {
+            selected: selected
+        }
+    };
+}
+
 function addList(emptyList) {
     return {
         type: ADD_LIST,
@@ -110,15 +119,6 @@ function sendCityToList(info) {
         type: INFO,
         payload: {
             info: info
-        }
-    };
-}
-
-function addArrImg(images) {
-    return {
-        type: ADD_ARR_IMG,
-        payload: {
-            images: images
         }
     };
 }
@@ -165,7 +165,8 @@ export const listToGallery = (value) => {
                     dispatch(addGallery(false));
                     dispatch(imgArray(result.data));
                     dispatch(imageSelect(result.data[0]));
-                    dispatch(addArrImg(result.data));
+                    dispatch(addIcon(false));
+                    dispatch(selected(true));
                 }
             }).catch((error) => {
                 alert(error.stack);
@@ -194,40 +195,34 @@ export const listToGallery = (value) => {
 export const toIcon = (value) => {
     return (dispatch, getState) => {
         let state = getState();
-        let img = [];
-        img = state.view.images;
-        let length = img.length - 1;
-        let infoImg = [];
-        infoImg = state.view.infoImg;
-
-        dispatch(addIcon(false));
+        let length = state.images.img.length - 1;
 
         if (typeof (value) === 'number') {
-            dispatch(imageSelect(img[value]));
-            dispatch(infoSelect(infoImg[value]));
+            dispatch(imageSelect(state.images.img[value]));
+            dispatch(infoSelect(state.images.infoImg[value]));
         }
 
         if (value === '-') {
-            let pos = img.indexOf(state.view.selectedImages);
+            let pos = state.images.img.indexOf(state.view.selectedImages);
             if (pos != -1) {
                 let index = pos - 1;
-                dispatch(imageSelect(img[index]));
-                dispatch(infoSelect(infoImg[index]));
-                if (img[index] === undefined) {
-                    dispatch(imageSelect(img[length]));
-                    dispatch(infoSelect(infoImg[length]));
+                dispatch(imageSelect(state.images.img[index]));
+                dispatch(infoSelect(state.images.infoImg[index]));
+                if (state.images.img[index] === undefined) {
+                    dispatch(imageSelect(state.images.img[length]));
+                    dispatch(infoSelect(state.images.infoImg[length]));
                 }
             }
         }
         if (value === '+') {
-            let pos = img.indexOf(state.view.selectedImages);
+            let pos = state.images.img.indexOf(state.view.selectedImages);
             if (pos != -1) {
                 let index = pos + 1;
-                dispatch(imageSelect(img[index]));
-                dispatch(infoSelect(infoImg[index]));
-                if (img[index] === undefined) {
-                    dispatch(imageSelect(img[0]));
-                    dispatch(infoSelect(infoImg[0]));
+                dispatch(imageSelect(state.images.img[index]));
+                dispatch(infoSelect(state.images.infoImg[index]));
+                if (state.images.img[index] === undefined) {
+                    dispatch(imageSelect(state.images.img[0]));
+                    dispatch(infoSelect(state.images.infoImg[0]));
                 }
             }
         }

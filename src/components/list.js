@@ -22,7 +22,7 @@ export default class List extends Component {
             infoCity = (this.props.infoCity.map((infoSingle, i) =>
                 <tr key={'io' + i}>
                     <td>{infoSingle.name}</td>
-                    <td><a href={infoSingle.descrizione}>Wika</a></td>
+                    <td><a href={infoSingle.descrizione} target="_blank">Wikipedia</a></td>
                     <td>{infoSingle.anno_fondazione}</td>
                     <td><input type="button" className="buttonList" value="Show" onClick={() => this.handleGallery(infoSingle.cityId)}/></td>
                 </tr>
