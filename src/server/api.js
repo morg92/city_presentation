@@ -8,7 +8,7 @@ app.use('/', routes);
 
 app.get('/src/img/images2.json', function (req, res) {
     console.log('ho fatto la chiamata');
-    fs.readFile('C:/Users/Administrator/Documents/project/presentation_city/src/img/images2.json', 'utf8', function (err, data) {
+    fs.readFile('C:/Users/Administrator/Documents/project/city_presentation/src/img/images2.json', 'utf8', function (err, data) {
         let obj = JSON.parse(data);
         let objStr = JSON.stringify(obj);
         res.json(objStr);

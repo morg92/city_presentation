@@ -40,7 +40,7 @@ export default class List extends Component {
                             <th width="9%">Go!</th>
                         </tr>
                     </thead>
-                    <tbody className="tab">
+                    <tbody>
                         {infoCity}
                     </tbody>
                 </table>

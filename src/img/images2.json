@@ -19,6 +19,14 @@
         {
             "id": 5,
             "name": "Paris"
+        },
+        {
+            "id": 6,
+            "name": "Moscow"
+        },
+        {
+            "id": 7,
+            "name": "Istanbul"
         }
     ],
     "info": [
@@ -54,7 +62,7 @@
                 "https://media-cdn.tripadvisor.com/media/photo-s/03/9b/2d/b5/berlin.jpg",
                 "https://2.bp.blogspot.com/-gTWqNdmtqHQ/V3RDdKkPyKI/AAAAAAAAKxk/_Wz5bfpq5OwjsTJ_m23H6RZgzItNHo1IACLcB/s1600/berlin.jpg"
             ],
-            "infoImg":[
+            "infoImg": [
                 "Brandenburger Tor",
                 "Bundestag",
                 "School Charlottenburg",
@@ -74,8 +82,8 @@
                 "http://travelblog.viator.com/wp-content/uploads/2015/07/hill-of-crosses.jpg",
                 "http://www.hoteltilto.com/blog/wp-content/uploads/The-Palace-of-the-Grand-Dukes.jpg"
             ],
-            "infoImg":[
-                "Moderni grattacieli città",
+            "infoImg": [
+                "Modern skyscrapers city",
                 "Vilnius Town Hall",
                 "St.Annes church",
                 "Hill of crosses",
@@ -94,7 +102,7 @@
                 "http://www.guide-evasion.fr/wp-content/uploads/2015/07/shutterstock_194751956_opt.jpg",
                 "http://st.ilfattoquotidiano.it/wp-content/uploads/2013/08/buckingham-palace-interna-nuova.jpg"
             ],
-            "infoImg":[
+            "infoImg": [
                 "London by night",
                 "London Bridge",
                 "Trafalgar Square",
@@ -105,7 +113,7 @@
         {
             "cityId": 5,
             "name": "Paris",
-            "anno_fondazione":"17 d.C.",
+            "anno_fondazione": "17 d.C.",
             "descrizione": "https://it.wikipedia.org/wiki/Parigi",
             "img": [
                 "http://www.telegraph.co.uk/content/dam/Travel/Destinations/Europe/France/Paris/paris-attractions-xlarge.jpg",
@@ -114,12 +122,52 @@
                 "http://s2.postimg.org/scv4v05bd/notre_dame_cathedral_1024x576.jpg",
                 "http://4.bp.blogspot.com/-G4bW1MfvBdQ/UtrWUcdXWTI/AAAAAAAAZis/hYJj4OfSj-E/s1600/Paris_July_2011-30.jpg"
             ],
-            "infoImg":[
+            "infoImg": [
                 "Tour Eiffel",
                 "Pont des Arts",
                 "Louvre",
                 "Notre Dame",
                 "Arc du Triomphe"
+            ]
+        },
+        {
+            "cityId": 6,
+            "name": "Moscow",
+            "anno_fondazione": "1147",
+            "descrizione": "https://en.wikipedia.org/wiki/Moscow",
+            "img": [
+                "http://worldsecretlocations.com/wp-content/uploads/2015/04/st-basil-cathedral-moscow-10.jpg",
+                "http://www.holidayextras.co.uk/images/holidayextras-blog/web-red-square-moscow-russia-kremlin-bucketlist.jpg",
+                "http://www.systemaspetsnaz.com/wp-content/uploads/2012/09/The-Lubyanka-Square-in-downtown-Moscow.jpg",
+                "http://fullwonders.com/wp-content/uploads/2016/12/the-kremlin-in-moscow-at-night.jpg",
+                "https://friendlylocalguides.com/blog/wp-content/uploads/2014/11/56080670.jpg"
+            ],
+            "infoImg": [
+                "Saint Basil's Cathedral",
+                "Red Square",
+                "Lubyanka Square",
+                "Kremlin",
+                "Conquerors of Space"
+            ]
+        },
+        {
+            "cityId": 7,
+            "name": "Istanbul",
+            "anno_fondazione": "667 a.C.",
+            "descrizione": "https://it.wikipedia.org/wiki/Istanbul",
+            "img":[
+                "https://userscontent2.emaze.com/images/37a73f3d-4b63-4890-a30d-f45c122df161/560ed3ac4c36983b99672ddf6854ae06.jpg",
+                "http://www.mototurismoverona.it/wp-content/uploads/2014/03/Istambul.jpg",
+                "http://image.nanopress.it/viaggi/fotogallery/1200X0/109951/ponte-sul-bosforo-illuminato-ad-istanbul.jpg",
+                "https://i1.wp.com/www.archeokids.it/wp/wp-content/uploads/2016/11/tumblr_inline_oglcgybucR1smyo6o_540.jpg?resize=540%2C359",
+                "https://istanbulavrupa.files.wordpress.com/2014/02/1523178_590639834353469_891319818_o.jpg"
+            ],
+            "infoImg": [
+                "Hagia Sophia",
+                "Moschea Blu",
+                "Bosphorus Bridge",
+                "Yerebatan Sarayi",
+                "Piazza Taksim"
             ]
         }
     ]

@@ -22,16 +22,16 @@ body {
     font-family: 'VT323', monospace;
     text-align: center;
     font-size: 22px;
-    color: white;
-    text-shadow: 2px 2px 4px black;
+    color: green;
+    text-shadow: 2px 2px 4px white;
     background-position-x: 45%;
     background-position-y: 20%;
     width: 80px;
     height: 80px;
     margin-top: 10px;
     margin-left: 100px;
-    background-color: green;
-    border: 3px dashed white;
+    background-color: lightgreen;
+    border: 3px dashed green;
     border-radius: 35% 35% 35% 35%;
     box-shadow: 5px 5px 5px gray;
      -webkit-transition: width 2s, height 2s, background-color 2s, -webkit-transform 2s;
@@ -71,8 +71,8 @@ table {
     text-shadow: 2px 2px 4px darkred;
 }
 
-.tab {
-    background-color: rgba(0, 0, 0, 255, 0.01);
+tbody {
+    background-color: rgba(192, 192, 192, 0.4);
     font-family: 'Averia Libre', cursive;
     font-weight: bold;
 }
@@ -96,7 +96,7 @@ a:active {
 }
 
 a:visited {
-    color: red;
+    color: purple;
 }
 
 .buttonList {
